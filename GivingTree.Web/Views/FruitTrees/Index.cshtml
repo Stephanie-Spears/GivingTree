@@ -1,0 +1,17 @@
+﻿@model IEnumerable<GivingTree.Data.Models.FruitTree>
+
+@{
+	ViewBag.Title = "Index";
+	ViewBag.Message = "Herro there!";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+	@Html.Partial("_FruitTreeSummary", item)
+}
