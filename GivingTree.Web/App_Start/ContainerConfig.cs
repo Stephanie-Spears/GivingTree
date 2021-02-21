@@ -33,8 +33,6 @@ namespace GivingTree.Web
 			// this sets our container as the dependency resolver throughout the project, instead of the default resolver that's supplied
 			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-
-
 		}
 	}
 }

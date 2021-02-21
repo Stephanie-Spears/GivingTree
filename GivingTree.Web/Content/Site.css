@@ -24,8 +24,11 @@ textarea {
 }
 
 
-/* Custom CSS Below */
+/*
+	Custom CSS Below
+*/
 
+/* Google Maps */
 #map {
 	height: 50rem;
 	width: 100%;

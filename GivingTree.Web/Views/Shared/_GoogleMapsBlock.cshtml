@@ -1,184 +1,23 @@
 ﻿<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script>
-	let map, infoWindow;
-
-	function initMap() {
-		const myLatLng = { lat: 45.512, lng: -122.658 };
-		map = new window.google.maps.Map(document.getElementById("map"),
-			{
-				center: myLatLng,
-				zoom: 14
-			});
-
-
-		// Create the initial InfoWindow.
-		let infoWindow = new window.google.maps.InfoWindow({
-			content: "Click the map to get Lat/Lng!",
-			position: myLatLng
-		});
-		infoWindow.open(map);
-		// Configure the click listener.
-		map.addListener("click", (mapsMouseEvent) => {
-			// Close the current InfoWindow.
-			infoWindow.close();
-			// Create a new InfoWindow.
-			infoWindow = new window.google.maps.InfoWindow({
-				position: mapsMouseEvent.latLng
-			});
-			infoWindow.setContent(
-				JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-			);
-			infoWindow.open(map);
-		});
-
-		const locationButton = document.createElement("button");
-		locationButton.textContent = "Pan to Current Location";
-		locationButton.classList.add("custom-map-control-button");
-		map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-		locationButton.addEventListener("click", () => {
-			// Try HTML5 geolocation.
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(
-					(position) => {
-						const pos = {
-							lat: position.coords.latitude,
-							lng: position.coords.longitude
-						};
-						infoWindow.setPosition(pos);
-						infoWindow.setContent("Location found.");
-						infoWindow.open(map);
-						map.setCenter(pos);
-					},
-					() => {
-						handleLocationError(true, infoWindow, map.getCenter());
-					}
-				);
-			} else {
-				// Browser doesn't support Geolocation
-				handleLocationError(false, infoWindow, map.getCenter());
-			}
-		});
-
-
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			infoWindow.setPosition(pos);
-			infoWindow.setContent(
-				browserHasGeolocation
-					? "Error: The Geolocation service failed."
-					: "Error: Your browser doesn't support geolocation."
-			);
-			infoWindow.open(map);
-		}
-
-		// set types of icons, like identifying tree types by custom fruit markers
-		const iconBase = "/Content/Images/Icons/";
-		const icons = {
-			appleTree: {
-				icon: iconBase + "apple.ico"
-			},
-			cherryTree: {
-				icon: iconBase + "cherry.ico"
-			},
-			figTree: {
-				icon: iconBase + "fig.ico"
-			},
-			figPurpleTree: {
-				icon: iconBase + "fig-purple.ico"
-			},
-			pearTree: {
-				icon: iconBase + "pear.ico"
-			},
-			persimmonTree: {
-				icon: iconBase + "persimmon.ico"
-			},
-			plumTree: {
-				icon: iconBase + "plum.ico"
-			}
-		};
-
-		// hardcoded icon locations
-		const features = [
-			{
-				position: new window.google.maps.LatLng(45.50896284997959, -122.64174555594482),
-				type: "appleTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.519457696849315, -122.65285015869141),
-				type: "appleTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.51885630632248, -122.68138644223633),
-				type: "cherryTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.5175332245376, -122.6246976928711),
-				type: "cherryTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.52444899014214, -122.62572524075928),
-				type: "figTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.51326306656372, -122.64791247373047),
-				type: "figTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.519157002389406, -122.62791392331543),
-				type: "figPurpleTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.50676699368567, -122.65203234677735),
-				type: "figPurpleTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.52553138086156, -122.67486330991211),
-				type: "pearTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.52168278590911, -122.64250514035645),
-				type: "pearTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.51470653649782, -122.63375041013184),
-				type: "persimmonTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.521923330806956, -122.692673177771),
-				type: "persimmonTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.5072482099805, -122.62902972226563),
-				type: "plumTree"
-			},
-			{
-				position: new window.google.maps.LatLng(45.509353482901105, -122.68988368039551),
-				type: "plumTree"
-			}
-		];
-
-		// create markers
-		for (let i = 0; i < features.length; i++) {
-			const marker = new window.google.maps.Marker({
-				position: features[i].position,
-				icon: icons[features[i].type].icon,
-				map: map
-			});
-		}
-
-	}
-
-	// todo: add information tooltip on icon click
-
-</script>
-
+<script src="/Scripts/GoogleMaps.js"></script>
 
 <div id="map"></div>
 
 
 @{
+	// todo: read from environment variable
+
 	var GoogleMapsApiKey = "";
 	var googleMapsSrc = "https://maps.googleapis.com/maps/api/js?key=" + GoogleMapsApiKey + "&callback=initMap&libraries=places&v=weekly";
 }
 
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 <script src="@googleMapsSrc" aysnc></script>
+
+
+
+@* todo next
+	https://docs.microsoft.com/en-us/aspnet/mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
+	https://docs.microsoft.com/en-us/aspnet/mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
+	https://dev.to/skipperhoa/login-and-register-using-asp-net-mvc-5-3i0g
+	*@

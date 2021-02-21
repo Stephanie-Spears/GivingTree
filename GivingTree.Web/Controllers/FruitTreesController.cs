@@ -6,7 +6,6 @@ namespace GivingTree.Web.Controllers
 {
     public class FruitTreesController : Controller
     {
-
 	    private readonly IFruitTreeData _db;
 
 	    public FruitTreesController(IFruitTreeData db)

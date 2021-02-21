@@ -34,7 +34,7 @@ namespace GivingTree.Data.Models
 	public enum FruitType
 	{
 		Apple,
-		Fig, 
+		Fig,
 		Pear,
 		Persimmon,
 		Cherry,
