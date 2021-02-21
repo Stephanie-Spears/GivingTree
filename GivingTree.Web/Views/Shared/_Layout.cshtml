@@ -1,55 +1,60 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>@ViewBag.Title - The Giving Tree</title>
-		@Styles.Render("~/Content/css")
-		@Scripts.Render("~/bundles/modernizr")
-	</head>
-	<body>
-		<nav class="navbar innavbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li>@Html.ActionLink("Home", "Index", "Home")</li>
-						<li>@Html.ActionLink("About", "About", "Home")</li>
-						<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-						<li>@Html.ActionLink("Fruit Trees", "Index", "FruitTrees")</li>
-					</ul>
-					@Html.Partial("_LoginPartial")
-				</div>
-			</div>
-		</nav>
-		<div class="container body-content">
-			@*@if (TempData["Message"] != null)
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - The Giving Tree</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		@Html.ActionLink("The Giving Tree", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+				</li>
+				<li class="nav-item">
+					@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+				</li>
+				<li class="nav-item">
+					@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+				</li>
+				<li class="nav-item">
+					@Html.ActionLink("Fruit Trees", "Index", "FruitTrees", new { area = "" }, new { @class = "nav-link" })
+				</li>
+			</ul>
+			@Html.Partial("_LoginPartial")
+		</div>
+</nav>
+
+
+<div class="container">
+	@*@if (TempData["Message"] != null)
 			{
 				<div class="alert alert-info">
 					@TempData["Message"]
 				</div>
 			}*@
-			
 
-			@RenderBody()
 
-			<hr/>
+	@RenderBody()
 
-			<footer>
-				<p>&copy; @DateTime.Now.Year - The Giving Tree</p>
-				@RenderSection("footer", required: false)
-			</footer>
-		</div>
+	<hr/>
 
-		@Scripts.Render("~/bundles/jquery")
-		@Scripts.Render("~/bundles/bootstrap")
-		@RenderSection("scripts", required: false)
-	</body>
+	<footer>
+		<p>&copy; @DateTime.Now.Year - The Giving Tree</p>
+		@RenderSection("footer", required: false)
+	</footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</body>
 </html>
