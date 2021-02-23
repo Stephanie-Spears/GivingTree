@@ -27,12 +27,10 @@ namespace GivingTree.Web
 				.InstancePerRequest();
 			builder.RegisterType<GivingTreeDbContext>().InstancePerRequest();
 
-
 			// now we just need to create the container from ContainerBuilder
 			var container = builder.Build();
 			// this sets our container as the dependency resolver throughout the project, instead of the default resolver that's supplied
 			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
 		}
 	}
 }

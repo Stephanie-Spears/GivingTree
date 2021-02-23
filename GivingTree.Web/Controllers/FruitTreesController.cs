@@ -15,6 +15,7 @@ namespace GivingTree.Web.Controllers
 
 
         // GET: FruitTrees
+        [Authorize]
         [HttpGet]
         public ActionResult Index()
         { 
@@ -23,6 +24,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // GET: FruitTrees/Details/5
+        [Authorize]
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -35,7 +37,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // GET: FruitTrees/Create
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
@@ -43,7 +45,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // POST: FruitTrees/Create
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(FruitTree fruitTree)
@@ -65,7 +67,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // GET: FruitTrees/Edit/5
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -78,7 +80,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // POST: FruitTrees/Edit/5
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FruitTree fruitTree)
@@ -101,7 +103,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // GET: FruitTrees/Delete/5
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -114,7 +116,7 @@ namespace GivingTree.Web.Controllers
         }
 
         // POST: FruitTrees/Delete/5
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection form)
