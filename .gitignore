@@ -78,3 +78,4 @@ _[Ss]cripts
 # Google Maps API Key #
 #######################
 GoogleMapsApiKey.txt
+secrets.xml

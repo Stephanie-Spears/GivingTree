@@ -3,6 +3,7 @@ using GivingTree.Data.Services;
 
 namespace GivingTree.Web.Controllers
 {
+	[RequireHttps]
 	public class HomeController : Controller
 	{
 

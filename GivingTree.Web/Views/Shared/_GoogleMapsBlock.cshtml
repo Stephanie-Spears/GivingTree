@@ -1,14 +1,13 @@
-﻿<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+﻿@using System.Configuration
+@using Microsoft.Configuration.ConfigurationBuilders
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="/Scripts/Custom/GoogleMaps.js"></script>
 
 <div id="map"></div>
 
 
 @{
-	// todo: read from environment variable
-
-	var GoogleMapsApiKey = "";
-	var googleMapsSrc = "https://maps.googleapis.com/maps/api/js?key=" + GoogleMapsApiKey + "&callback=initMap&libraries=places&v=weekly";
+	var googleMapsSrc = "https://maps.googleapis.com/maps/api/js?key=" + ConfigurationManager.AppSettings["GoogleMapsApiKey"] + "&callback=initMap&libraries=places&v=weekly";
 }
 
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
