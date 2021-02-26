@@ -1,9 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 <div class="row">
 	<div class="col">
-
-
-
 		@if (Request.IsAuthenticated)
 		{
 			using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "form-inline my-2 my-lg-0" }))
@@ -20,7 +17,6 @@
 		}
 		else
 		{
-			@*<ul class="navbar-nav ml-auto">*@
 			<ul class="navbar-nav ml-lg-auto">
 				<li class="nav-item">
 					@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })

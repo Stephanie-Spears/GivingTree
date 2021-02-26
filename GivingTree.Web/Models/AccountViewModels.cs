@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using GivingTree.Data.Models;
 
 namespace GivingTree.Web.Models
 {
@@ -8,6 +9,9 @@ namespace GivingTree.Web.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public string UserAboutMeSection { get; set; }
+        public FruitType UserFavoriteFruit { get; set; }
     }
 
     public class ExternalLoginListViewModel

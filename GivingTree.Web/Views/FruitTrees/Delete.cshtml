@@ -10,24 +10,26 @@
 <div>
 	<h4>Tree</h4>
 	<hr />
-	<dl class="dl-horizontal">
-		<dt>
+	<dl class="row">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.Name)
 		</dt>
 
-		<dd>
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.Name)
 		</dd>
-
 	</dl>
 
 	@using (Html.BeginForm())
 	{
 		@Html.AntiForgeryToken()
 
-		<div class="form-actions no-color">
-			<input type="submit" value="Delete" class="btn btn-light" /> |
-			@Html.ActionLink("Back to List", "Index")
+		@*<div class="form-actions no-color">*@
+		<div class="form-group">
+			<div class="col">
+				<input type="submit" value="Delete" class="btn btn-light"/> |
+				@Html.ActionLink("Back to List", "Index")
+			</div>
 		</div>
 	}
 </div>

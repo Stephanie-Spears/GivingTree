@@ -25,9 +25,13 @@
 				<li class="nav-item">
 					@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
 				</li>
-				<li class="nav-item">
-					@Html.ActionLink("Fruit Trees", "Index", "FruitTrees", new { area = "" }, new { @class = "nav-link" })
-				</li>
+				@if (Request.IsAuthenticated)
+				{
+					<li class="nav-item">
+						@Html.ActionLink("Fruit Trees", "Index", "FruitTrees", new { area = "" }, new { @class = "nav-link" })
+					</li>
+				}
+
 			</ul>
 			@Html.Partial("_LoginPartial")
 		</div>
@@ -35,15 +39,17 @@
 
 
 <div class="container">
-	@*@if (TempData["Message"] != null)
+	<div class="row">
+		<div class="col">
+			@*@if (TempData["Message"] != null)
 			{
 				<div class="alert alert-info">
 					@TempData["Message"]
 				</div>
 			}*@
-
-
-	@RenderBody()
+			@RenderBody()
+		</div>
+	</div>
 
 	<hr/>
 

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -11,17 +14,65 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using GivingTree.Web.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
+
 
 namespace GivingTree.Web
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridasync(message);
         }
-    }
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+			// From SendGrid Docs
+			/*			string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
+						var client = new SendGridClient(apiKey);
+						var from = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail11"], "The Giving Tree via SendGrid");
+						string subject = "The Giving Tree - Confirm Your Account";
+						
+						var to = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "test user");
+						string plainTextContent = "Account Confirmation for The Giving Tree - Complete your registration";
+						string htmlContent = "<strong>Insert Account Confirmation HTML and Links Here</strong>";
+						var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+						var response = await client.SendEmailAsync(msg).ConfigureAwait(false);*/
+
+
+			//string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
+			//var client = new SendGridClient(apiKey);
+			//var msg = new SendGridMessage();
+			//         msg.SetSubject("Thank you for signing up, % name %");
+
+
+
+			// For more advanced cases, we can build the SendGridMessage object ourselves with these minimum required settings
+
+			string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
+			var client = new SendGridClient(apiKey);
+			var msg = new SendGridMessage()
+			{
+				// todo: configure variable substitution to enable dynamic user details in account confirmation email
+				From = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail11"], "The Giving Tree via SendGrid"),
+				Subject = "Account Confirmation for The Giving Tree - Complete Your Registration",
+				PlainTextContent = "Finish Setting Up Your Account for The Giving Tree",
+				HtmlContent = "<p>Follow the link below to confirm your account for" +
+				              "<strong>" +
+				              "The Giving Tree" +
+                              "</strong>" +
+				              "</p>" +
+				              "</hr>" +
+				              "<a href=''>Confirm Email</a>"
+			};
+			msg.AddTo(new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "Test User"));
+
+			var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
+        }
+	}
 
     public class SmsService : IIdentityMessageService
     {
