@@ -37,6 +37,7 @@
                         Id = c.String(nullable: false, maxLength: 128),
                         UserAboutMeSection = c.String(),
                         UserFavoriteFruit = c.Int(nullable: false),
+                        UserSecondFavoriteFruit = c.Int(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

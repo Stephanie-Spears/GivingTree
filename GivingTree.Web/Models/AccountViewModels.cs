@@ -12,6 +12,7 @@ namespace GivingTree.Web.Models
 
         public string UserAboutMeSection { get; set; }
         public FruitType UserFavoriteFruit { get; set; }
+        public FruitType UserSecondFavoriteFruit { get; set; }
     }
 
     public class ExternalLoginListViewModel

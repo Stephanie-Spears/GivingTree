@@ -11,8 +11,8 @@ namespace GivingTree.Web.Models
     public class ApplicationUser : IdentityUser
     {
         public string UserAboutMeSection { get; set; }
-
         public FruitType UserFavoriteFruit { get; set; }
+        public FruitType UserSecondFavoriteFruit { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -17,8 +17,6 @@ using GivingTree.Web.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-
-
 namespace GivingTree.Web
 {
     public class EmailService : IIdentityMessageService
@@ -68,7 +66,8 @@ namespace GivingTree.Web
 				              "</hr>" +
 				              "<a href=''>Confirm Email</a>"
 			};
-			msg.AddTo(new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "Test User"));
+			/* TODO: have email be created dynamically with user email and username */
+			msg.AddTo(new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "New User"));
 
 			var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
         }
@@ -101,14 +100,15 @@ namespace GivingTree.Web
                 RequireUniqueEmail = true
             };
 
+			/* TODO: turn password validators back on when done testing */
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+               // RequireNonLetterOrDigit = true,
+               // RequireDigit = true,
+               // RequireLowercase = true,
+               // RequireUppercase = true,
             };
 
             // Configure user lockout defaults

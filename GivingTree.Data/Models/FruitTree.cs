@@ -29,6 +29,7 @@ namespace GivingTree.Data.Models
 
 		[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
 		public byte[] Image { get; set; }
+
 	}
 
 	public enum FruitType
