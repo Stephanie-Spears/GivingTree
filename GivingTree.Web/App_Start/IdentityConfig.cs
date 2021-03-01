@@ -16,6 +16,9 @@ using Microsoft.Owin.Security;
 using GivingTree.Web.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace GivingTree.Web
 {
@@ -28,46 +31,16 @@ namespace GivingTree.Web
         }
         private async Task configSendGridasync(IdentityMessage message)
         {
-			// From SendGrid Docs
-			/*			string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
-						var client = new SendGridClient(apiKey);
-						var from = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail11"], "The Giving Tree via SendGrid");
-						string subject = "The Giving Tree - Confirm Your Account";
-						
-						var to = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "test user");
-						string plainTextContent = "Account Confirmation for The Giving Tree - Complete your registration";
-						string htmlContent = "<strong>Insert Account Confirmation HTML and Links Here</strong>";
-						var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-						var response = await client.SendEmailAsync(msg).ConfigureAwait(false);*/
-
-
-			//string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
-			//var client = new SendGridClient(apiKey);
-			//var msg = new SendGridMessage();
-			//         msg.SetSubject("Thank you for signing up, % name %");
-
-
-
-			// For more advanced cases, we can build the SendGridMessage object ourselves with these minimum required settings
-
-			string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
+	        string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
 			var client = new SendGridClient(apiKey);
 			var msg = new SendGridMessage()
 			{
-				// todo: configure variable substitution to enable dynamic user details in account confirmation email
-				From = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail11"], "The Giving Tree via SendGrid"),
-				Subject = "Account Confirmation for The Giving Tree - Complete Your Registration",
-				PlainTextContent = "Finish Setting Up Your Account for The Giving Tree",
-				HtmlContent = "<p>Follow the link below to confirm your account for" +
-				              "<strong>" +
-				              "The Giving Tree" +
-                              "</strong>" +
-				              "</p>" +
-				              "</hr>" +
-				              "<a href=''>Confirm Email</a>"
+				From = new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "The Giving Tree via SendGrid"),
+                Subject = message.Subject,
+                HtmlContent = message.Body
 			};
-			/* TODO: have email be created dynamically with user email and username */
-			msg.AddTo(new EmailAddress(ConfigurationManager.AppSettings["mailAccountGmail"], "New User"));
+
+			msg.AddTo(new EmailAddress(message.Destination, "New Giving Tree User"));
 
 			var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
         }
@@ -77,9 +50,23 @@ namespace GivingTree.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your SMS service here to send a text message.
-            return Task.FromResult(0);
-        }
+			string accountSid = ConfigurationManager.AppSettings["SMSAccountIdentification"];
+			string authToken = ConfigurationManager.AppSettings["SMSAccountPassword"];
+			string fromNumber = ConfigurationManager.AppSettings["SMSAccountFrom"];
+
+			TwilioClient.Init(accountSid, authToken);
+
+			MessageResource result = MessageResource.Create(
+			new PhoneNumber(message.Destination),
+			from: new PhoneNumber(fromNumber),
+			body: message.Body
+			);
+
+			//Status is one of Queued, Sending, Sent, Failed or null if the number is not valid
+			Trace.TraceInformation(result.Status.ToString());
+			//Twilio doesn't currently have an async API, so return success.
+			return Task.FromResult(0);
+		}
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
@@ -105,7 +92,7 @@ namespace GivingTree.Web
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-               // RequireNonLetterOrDigit = true,
+                // RequireNonLetterOrDigit = true,
                // RequireDigit = true,
                // RequireLowercase = true,
                // RequireUppercase = true,
