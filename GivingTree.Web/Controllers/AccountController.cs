@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -172,21 +169,9 @@ namespace GivingTree.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-					// Comment the following line to prevent log in until the user is confirmed.
-					// await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-					// Send an email with this link
-/*					string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-*/
-
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
-
-
-
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                                      + "before you can log in.";
+	                string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+	                ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+	                                  + "before you can log in.";
 
                     return View("Info");
                     //return RedirectToAction("Index", "Home");
@@ -375,7 +360,6 @@ namespace GivingTree.Web.Controllers
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
-                case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
