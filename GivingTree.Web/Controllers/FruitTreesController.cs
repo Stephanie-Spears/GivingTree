@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using GivingTree.Data.Models;
 using GivingTree.Data.Services;
 
@@ -10,16 +15,18 @@ namespace GivingTree.Web.Controllers
 
 	    public FruitTreesController(IFruitTreeData db)
 	    {
-		    this._db = db;
+		    _db = db;
 	    }
-
 
         // GET: FruitTrees
         [Authorize]
         [HttpGet]
         public ActionResult Index()
         { 
-	        var model = _db.GetAll();
+	        IEnumerable<FruitTree> model = _db.GetAll();
+
+	        ViewBag.Markers = GetMapsMarkers();
+
 	        return View(model);
         }
 
@@ -41,6 +48,7 @@ namespace GivingTree.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+	        ViewBag.Markers = GetMapsMarkers();
             return View();
         }
 
@@ -76,6 +84,9 @@ namespace GivingTree.Web.Controllers
 	        {
 		        return HttpNotFound();
 	        }
+
+	        ViewBag.Markers = GetMapsMarkers();
+
 	        return View(model);
         }
 
@@ -131,6 +142,49 @@ namespace GivingTree.Web.Controllers
 	            TempData["Message"] = "There was an error with deleting the tree";
                 return View();
             }
+        }
+
+        public static MvcHtmlString EnumDropDownListFor<TModel, TEnum>(HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TEnum>> expression)
+        {
+	        ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+	        IEnumerable<TEnum> values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>();
+
+	        IEnumerable<SelectListItem> items =
+		        values.Select(value => new SelectListItem
+		        {
+			        Text = value.ToString(),
+			        Value = value.ToString(),
+			        Selected = value.Equals(metadata.Model)
+		        });
+
+	        return htmlHelper.DropDownListFor(
+		        expression,
+		        items
+	        );
+        }
+
+        private string GetMapsMarkers()
+        {
+	        IEnumerable<FruitTree> model = _db.GetAll();
+
+	        string markers = "[";
+	        foreach (var m in model)
+	        {
+		        string formattedName = m.Name.Replace("\"", "").Replace("\'", "");
+		        string formattedDescription = m.Description.Replace("\"", "").Replace("\'", "");
+
+		        markers += "{";
+		        markers += $"'Id': '{m.Id}', ";
+		        markers += $"'Name': '{formattedName}', ";
+		        markers += $"'Type': '{m.Fruit}', ";
+		        markers += $"'Description': '{formattedDescription}', ";
+		        markers += $"'Icon': '/Content/Images/Optimized/Compressed/{m.Fruit}.ico', ";
+		        markers += $"'Latitude': '{m.Latitude}', ";
+		        markers += $"'Longitude': '{m.Longitude}' ";
+		        markers += "},";
+	        }
+	        markers += "];";
+	        return (markers);
         }
     }
 }

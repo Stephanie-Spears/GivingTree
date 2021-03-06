@@ -8,19 +8,19 @@ namespace GivingTree.Web.Controllers
 	{
 
 		//
-		private IFruitTreeData db;
+		private IFruitTreeData _db;
 
 		//
 		public HomeController(IFruitTreeData db)
 		{
-			this.db = db;
+			this._db = db;
 		}
 
 		//
 		public ActionResult Index()
 		{
 			//
-			var model = db.GetAll();
+			var model = _db.GetAll();
 			return View(model);
 		}
 

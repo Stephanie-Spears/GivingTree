@@ -237,11 +237,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102240824354_init.cs" />
-    <Compile Include="Migrations\202102240824354_init.designer.cs">
-      <DependentUpon>202102240824354_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -338,38 +333,69 @@
     <Content Include="Content\Images\Original\apple-120x120.png">
       <DependentUpon>apple.png</DependentUpon>
     </Content>
+    <Content Include="Content\Images\Original\apple-512x512.png">
+      <DependentUpon>apple.png</DependentUpon>
+    </Content>
     <Content Include="Content\Images\Original\apple.ico">
       <DependentUpon>apple.png</DependentUpon>
     </Content>
-    <Content Include="Content\Images\Original\apple.png" />
-    <Content Include="Content\Images\Original\cherry.ico">
-      <DependentUpon>cherry.png</DependentUpon>
+    <Content Include="Content\Images\Original\apple.png">
+      <DependentUpon>apple.svg</DependentUpon>
     </Content>
-    <Content Include="Content\Images\Original\cherry.png" />
-    <Content Include="Content\Images\Original\fig-purple.ico">
-      <DependentUpon>fig-purple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\fig-purple.png" />
-    <Content Include="Content\Images\Original\fig.ico">
-      <DependentUpon>fig.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\fig.png" />
-    <Content Include="Content\Images\Original\pear.ico">
-      <DependentUpon>pear.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\pear.png" />
-    <Content Include="Content\Images\Original\persimmon.ico">
-      <DependentUpon>persimmon.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\persimmon.png" />
+    <Content Include="Content\Images\Original\apple.svg" />
     <Content Include="Content\Images\Original\plum-leaf.ico">
       <DependentUpon>plum-leaf.png</DependentUpon>
     </Content>
-    <Content Include="Content\Images\Original\plum-leaf.png" />
+    <Content Include="Content\Images\Original\plum-leaf.png">
+      <DependentUpon>plum-leaf.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\plum-leaf.svg" />
     <Content Include="Content\Images\Original\plum.ico">
       <DependentUpon>plum.png</DependentUpon>
     </Content>
-    <Content Include="Content\Images\Original\plum.png" />
+    <Content Include="Content\Images\Original\plum.png">
+      <DependentUpon>plum.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\plum.svg" />
+    <Content Include="Content\Images\Original\cherry.ico">
+      <DependentUpon>cherry.png</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\cherry.png">
+      <DependentUpon>cherry.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\cherry.svg" />
+    <Content Include="Content\Images\Original\current-location-512x512.jpg">
+      <DependentUpon>current-location.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\current-location.svg" />
+    <Content Include="Content\Images\Original\fig-purple.ico">
+      <DependentUpon>fig-purple.png</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\fig-purple.png">
+      <DependentUpon>fig-purple.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\fig-purple.svg" />
+    <Content Include="Content\Images\Original\fig.ico">
+      <DependentUpon>fig.png</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\fig.png">
+      <DependentUpon>fig.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\fig.svg" />
+    <Content Include="Content\Images\Original\pear.ico">
+      <DependentUpon>pear.png</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\pear.png">
+      <DependentUpon>pear.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\pear.svg" />
+    <Content Include="Content\Images\Original\persimmon.ico">
+      <DependentUpon>persimmon.png</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\persimmon.png">
+      <DependentUpon>persimmon.svg</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\Original\persimmon.svg" />
     <Content Include="Content\Images\Optimized\Quality\apple.png" />
     <Content Include="Content\Images\Optimized\Quality\cherry.png" />
     <Content Include="Content\Images\Optimized\Quality\fig-purple.png" />
@@ -423,7 +449,6 @@
     <Content Include="Scripts\esm\popper.min.js.map">
       <DependentUpon>popper.min.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\Custom\GoogleMaps.js" />
     <Content Include="Scripts\index.js.flow">
       <DependentUpon>index.js</DependentUpon>
     </Content>
@@ -612,6 +637,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -627,11 +653,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102240824354_init.resx">
-      <DependentUpon>202102240824354_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -421,3 +421,4 @@ healthchecksdb
 #######################
 GoogleMapsApiKey.txt
 secrets.xml
+secrets.txt

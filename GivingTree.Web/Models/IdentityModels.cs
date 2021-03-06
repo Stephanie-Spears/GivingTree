@@ -25,8 +25,8 @@ namespace GivingTree.Web.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+	    public ApplicationDbContext()
+            : base("GivingTreeDbContext", throwIfV1Schema: false)
         {
         }
 

@@ -9,6 +9,8 @@ namespace GivingTree.Data.Models
 	{
 		public int Id { get; set; }
 
+		// regex specifies letters only, first letter must be uppercase, no whitespace, numbers, or special characters allowed.
+		// [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
 		[Required]
 		public string Name { get; set; }
 
@@ -16,6 +18,9 @@ namespace GivingTree.Data.Models
 		[Required]
 		public FruitType Fruit { get; set; }
 
+		// regex specifies first char must be uppercase, allows subsequent special characters and numbers
+		// [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+		[Required]
 		public string Description { get; set; }
 
 		[Required]
@@ -24,13 +29,19 @@ namespace GivingTree.Data.Models
 		[Required]
 		public double Longitude { get; set; }
 
+		/* Todo: se up star rating system */
+/*		[RegularExpression()]
+		public string StarRating { get; set; }*/
+
 /*		[Required]
-		public DbGeography Location { get; set; }*/
+		public DbGeography Location { get; set; }
 
 		[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
 		public byte[] Image { get; set; }
+*/
 
 	}
+
 
 	public enum FruitType
 	{
@@ -41,7 +52,10 @@ namespace GivingTree.Data.Models
 		Cherry,
 		Plum
 	}
+
+	/* todo: connect user as creators of FruitTree posts (only creator can edit/delete their own posts), track who rates which locations, set regex for input validations, allow users to upload photos of locations */
 }
+
 
 
 
