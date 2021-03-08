@@ -504,3 +504,9 @@ namespace GivingTree.Web.Controllers
         #endregion
     }
 }
+
+// todo: change google and facebook login button styling
+
+// todo : react to cancelled external login attempt: (https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/facebook-logins?view=aspnetcore-5.0#react-to-cancel-authorize-external-sign-in)
+
+// todo: enable 'logout everywhere' in account management

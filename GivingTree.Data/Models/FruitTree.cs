@@ -29,7 +29,6 @@ namespace GivingTree.Data.Models
 		[Required]
 		public double Longitude { get; set; }
 
-		/* Todo: se up star rating system */
 /*		[RegularExpression()]
 		public string StarRating { get; set; }*/
 
@@ -53,7 +52,7 @@ namespace GivingTree.Data.Models
 		Plum
 	}
 
-	/* todo: connect user as creators of FruitTree posts (only creator can edit/delete their own posts), track who rates which locations, set regex for input validations, allow users to upload photos of locations */
+	/* todo: set up star rating system, connect user as creators of FruitTree posts (only creator can edit/delete their own posts), track who rates which locations, set regex for input validations, allow users to upload photos of locations */
 }
 
 

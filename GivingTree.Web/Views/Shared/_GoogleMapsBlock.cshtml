@@ -50,7 +50,6 @@
 				}
 			});
 
-
 		// create markers
 		for (let i = 0; i < mapMarkers.length; i++) {
 			const marker = new window.google.maps.Marker({
@@ -62,9 +61,8 @@
 				position: new window.google.maps.LatLng(mapMarkers[i].Latitude, mapMarkers[i].Longitude),
 				animation: window.google.maps.Animation.DROP
 			});
-			const infoWindow = new window.google.maps.InfoWindow({
-				content:
-					`<div class="card" style="max-width: 12rem;">
+			marker.content =
+				`<div class="card" style="max-width: 12rem;">
 						<img class="card-img-top p-5" style="max-width: 12rem;" src="/Content/Images/Original/${marker.type}.svg" />
 						<div class="card-body">
 							<h5 class='card-title text-center'>${marker.name}</h5>
@@ -75,26 +73,22 @@
 							<hr />
 							<p class="card-text"><label class="font-weight-bold">Location: </label> ${marker.position}</p>
 						</div>
-					</div>`
-			});
+					</div>`;
+
 			marker.addListener("click",
 				() => {
-					toggleBounce(marker);
-					infoWindow.open(marker.get("map"), marker);
+					toggleMarkerInfo(marker);
 				});
 		}
-
-		// todo: make animation turn off when click elsewhere
-		// for animating icons
-		function toggleBounce(marker) {
-			if (marker.getAnimation() !== null) {
-				marker.setAnimation(null);
-			} else {
-				marker.setAnimation(window.google.maps.Animation.BOUNCE);
-				setTimeout(function () { marker.setAnimation(null); }, 750);
-			}
+		
+		function toggleMarkerInfo(marker) {
+			infoWindow.close();
+			marker.setAnimation(window.google.maps.Animation.BOUNCE);
+			setTimeout(function() { marker.setAnimation(null); }, 750);
+			infoWindow.setContent(marker.content);
+			infoWindow.setPosition(marker.position);
+			infoWindow.open(map);
 		}
-
 
 
 
