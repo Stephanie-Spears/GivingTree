@@ -19,20 +19,24 @@
 	width: 100%;
 }
 
-.panTo-button {
+.currentLocation-button {
 	background-color: #fff;
 	border: 0;
 	border-radius: 0.2rem;
 	box-shadow: 0 0.1rem 0.4rem -0.1rem rgba(0, 0, 0, 0.3);
 	cursor: pointer;
-	margin: 1rem;
-	padding: 1rem;
+	margin: 0.5rem;
+	padding: 0.6rem;
 	font: 400 1.2rem Roboto, Arial, sans-serif;
 	overflow: hidden;
 }
 
-.panTo-button:hover {
+.currentLocation-button:hover {
 	background: #ebebeb;
+}
+
+.currentLocation-button img {
+	max-width: 1.4rem;
 }
 
 #legend {

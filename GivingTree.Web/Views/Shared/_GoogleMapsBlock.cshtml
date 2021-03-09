@@ -5,130 +5,148 @@
 	// ReSharper disable PossiblyUnassignedProperty
 	function initMap() {
 		const mapMarkers = @Html.Raw(ViewBag.Markers);
-		const initLatLng = { lat: 45.502424816134386, lng: -122.63250256190184 };
 		const map = new window.google.maps.Map(document.getElementById("map"),
 			{
-				center: initLatLng,
+				center: { lat: 45.502424816134386, lng: -122.63250256190184 },
 				zoom: 14
 			});
 
-		// Create Legend
+		// Create the initial InfoWindow
+		let infoWindow = new window.google.maps.InfoWindow({
+			content: "Click the map to get Lat/Lng!",
+			position: map.center
+	});
+		infoWindow.open(map);
+
 		createLegend();
+		createMapClickEventListener();
+		createMarkers();
+		createPanToButton();
+
+		// Create Map 'click' Event Listener
+		function createMapClickEventListener()
+		{
+			map.addListener("click",
+				(mapsMouseEvent) => {
+					// Close the current InfoWindow.
+					infoWindow.close();
+					// Create a new InfoWindow.
+					infoWindow = new window.google.maps.InfoWindow({
+						position: mapsMouseEvent.latLng
+					});
+					infoWindow.setContent(
+						JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+					);
+					infoWindow.open(map);
+					// Display the lat/lng in Create and Edit form fields
+					if (document.getElementById("Latitude")) {
+						document.getElementById("Latitude").value = mapsMouseEvent.latLng.lat();
+						document.getElementById("Longitude").value = mapsMouseEvent.latLng.lng();
+					}
+				});
+		}
+
+		// Create Legend
 		function createLegend() {
 			const legend = document.getElementById("legend");
-			for (let i = 0; i < mapMarkers.length; i++) {
-				const type = mapMarkers[i].Type;
-				const icon = mapMarkers[i].Icon;
+			const distinctTypes = [...new window.Set(mapMarkers.map(x => x.Type))];
+			for (let i = 0; i < distinctTypes.length; i++) {
+				const type = distinctTypes[i];
 				const div = document.createElement("div");
-				div.innerHTML = `<img src="${icon}"> ${type}`;
+				div.innerHTML = `<img src="/Content/Images/Original/${type}.ico"> ${type}`;
 				legend.appendChild(div);
 			}
 			map.controls[window.google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 		}
 
-
-		// Create the initial InfoWindow.
-		let infoWindow = new window.google.maps.InfoWindow({
-			content: "Click the map to get Lat/Lng!",
-			position: initLatLng
-		});
-		infoWindow.open(map);
-
-		// Configure the click listener.
-		map.addListener("click",
-			(mapsMouseEvent) => {
-				// Close the current InfoWindow.
-				infoWindow.close();
-				// Create a new InfoWindow.
-				infoWindow = new window.google.maps.InfoWindow({
-					position: mapsMouseEvent.latLng
-				});
-				infoWindow.setContent(
-					JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-				);
-				infoWindow.open(map);
-				// display the lat/lng in Create and Edit form fields
-				if (document.getElementById("Latitude")) {
-					document.getElementById("Latitude").value = mapsMouseEvent.latLng.lat();
-					document.getElementById("Longitude").value = mapsMouseEvent.latLng.lng();
-				}
-			});
-
 		// create markers
-		for (let i = 0; i < mapMarkers.length; i++) {
-			const marker = new window.google.maps.Marker({
-				map: map,
-				name: mapMarkers[i].Name,
-				type: mapMarkers[i].Type,
-				description: mapMarkers[i].Description,
-				icon: mapMarkers[i].Icon,
-				position: new window.google.maps.LatLng(mapMarkers[i].Latitude, mapMarkers[i].Longitude),
-				animation: window.google.maps.Animation.DROP
-			});
-			marker.content =
-				`<div class="card" style="max-width: 12rem; max-height: 12rem;">
-						<img class="card-img-top p-5" style="max-width: 12rem;" src="/Content/Images/Original/${marker.type}.svg" />
-						<div class="card-body">
-							<h5 class='card-title text-center'>${marker.name}</h5>
-							<hr />
-							<p class="card-text"><label class="font-weight-bold">Fruit Type: </label> ${marker.type}</p>
-							<hr />
-							<p class="card-text"><label class="font-weight-bold">Description: </label> ${marker.description}</p>
-							<hr />
-							<p class="card-text"><label class="font-weight-bold">Location: </label> ${marker.position}</p>
-						</div>
-					</div>`;
-
-			marker.addListener("click",
-				() => {
-					marker.setAnimation(window.google.maps.Animation.BOUNCE);
-					setTimeout(function() { marker.setAnimation(null); }, 750);
-					infoWindow.setContent(marker.content);
-					infoWindow.open(map, marker);
+		function createMarkers() {
+			for (let i = 0; i < mapMarkers.length; i++) {
+				const marker = new window.google.maps.Marker({
+					map: map,
+					name: mapMarkers[i].Name,
+					type: mapMarkers[i].Type,
+					description: mapMarkers[i].Description,
+					icon: mapMarkers[i].Icon,
+					position: new window.google.maps.LatLng(mapMarkers[i].Latitude, mapMarkers[i].Longitude),
+					animation: window.google.maps.Animation.DROP,
+					content: function () {
+						return `<div class='card' style='max-width: 12rem; max-height: 12rem;'>
+								<img class='card-img-top p-5' src='/Content/Images/Original/${this.type}.svg' />
+								<div class='card-body'>
+									<h5 class='card-title text-center'>
+										${this.name}
+									</h5>
+									<hr />
+									<p class='card-text'>
+										<label class='font-weight-bold'>Fruit Type: </label>
+										${this.type}
+									</p>
+									<hr />
+									<p class='card-text'>
+										<label class='font-weight-bold'>Description: </label>
+										${this.description}
+									</p>
+									<hr />
+									<p class='card-text'>
+										<label class='font-weight-bold'>Location: </label>
+										${this.position}
+									</p>
+								</div>
+							</div>`;
+					}
 				});
+				marker.addListener("click",
+					() => {
+						marker.setAnimation(window.google.maps.Animation.BOUNCE);
+						setTimeout(function() { marker.setAnimation(null); }, 750);
+						infoWindow.setContent(marker.content());
+						infoWindow.open(map, marker);
+					});
+			}
 		}
 
-
-
-		// todo: change button contents to 'current-location.svg' on smaller screens
 		// Create button to get current location and center the map there
-		const panToButton = document.createElement("div");
-		panToButton.textContent = "Current Location";
-		panToButton.classList.add("panTo-button");
-		map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(panToButton);
-		panToButton.addEventListener("click",
-			() => {
-				// Try HTML5 geolocation.
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(
-						(position) => {
-							const pos = {
-								lat: position.coords.latitude,
-								lng: position.coords.longitude
-							};
-							infoWindow.setPosition(pos);
-							infoWindow.setContent("Location found.");
-							infoWindow.open(map);
-							map.setCenter(pos);
-						},
-						() => {
-							handleLocationError(true, infoWindow, map.getCenter());
-						}
-					);
-				} else {
-					// Browser doesn't support Geolocation
-					handleLocationError(false, infoWindow, map.getCenter());
-				}
-			});
+		function createPanToButton() {
+			const currentLocationButton = document.createElement("div");
+			currentLocationButton.classList.add("currentLocation-button");
+			const currentLocationButtonContent = window.innerWidth <= 768 ? "<img src='/Content/Images/Original/current-location.svg' alt='current location' />" : "Current Location";
+			currentLocationButton.innerHTML = currentLocationButtonContent;
+			map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(currentLocationButton);
+			currentLocationButton.addEventListener("click",
+				() => {
+					// Try HTML5 geolocation.
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(
+							(position) => {
+								const pos = {
+									lat: position.coords.latitude,
+									lng: position.coords.longitude
+								};
+								infoWindow.setPosition(pos);
+								infoWindow.setContent("Location found.");
+								infoWindow.open(map);
+								map.setCenter(pos);
+							},
+							() => {
+								handleLocationError(true, infoWindow, map.getCenter());
+							}
+						);
+					} else {
+						// Browser doesn't support Geolocation
+						handleLocationError(false, infoWindow, map.getCenter());
+					}
+				});
 
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			infoWindow.setPosition(pos);
-			infoWindow.setContent(
-				browserHasGeolocation
-				? "Error: The Geolocation service failed."
-				: "Error: Your browser doesn't support geolocation."
-			);
-			infoWindow.open(map);
+			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+				infoWindow.setPosition(pos);
+				infoWindow.setContent(
+					browserHasGeolocation
+					? "Error: The Geolocation service failed."
+					: "Error: Your browser doesn't support geolocation."
+				);
+				infoWindow.open(map);
+			}
 		}
 	}
 // ReSharper restore PossiblyUnassignedProperty
