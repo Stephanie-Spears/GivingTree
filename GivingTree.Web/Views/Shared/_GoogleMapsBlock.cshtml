@@ -13,15 +13,19 @@
 			});
 
 		// Create Legend
-		const legend = document.getElementById("legend");
-		for (let i = 0; i < mapMarkers.length; i++) {
-			const type = mapMarkers[i].Type;
-			const icon = mapMarkers[i].Icon;
-			const div = document.createElement("div");
-			div.innerHTML = `<img src="${icon}"> ${type}`;
-			legend.appendChild(div);
+		createLegend();
+		function createLegend() {
+			const legend = document.getElementById("legend");
+			for (let i = 0; i < mapMarkers.length; i++) {
+				const type = mapMarkers[i].Type;
+				const icon = mapMarkers[i].Icon;
+				const div = document.createElement("div");
+				div.innerHTML = `<img src="${icon}"> ${type}`;
+				legend.appendChild(div);
+			}
+			map.controls[window.google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 		}
-		map.controls[window.google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
 
 		// Create the initial InfoWindow.
 		let infoWindow = new window.google.maps.InfoWindow({
@@ -62,7 +66,7 @@
 				animation: window.google.maps.Animation.DROP
 			});
 			marker.content =
-				`<div class="card" style="max-width: 12rem;">
+				`<div class="card" style="max-width: 12rem; max-height: 12rem;">
 						<img class="card-img-top p-5" style="max-width: 12rem;" src="/Content/Images/Original/${marker.type}.svg" />
 						<div class="card-body">
 							<h5 class='card-title text-center'>${marker.name}</h5>
@@ -77,26 +81,20 @@
 
 			marker.addListener("click",
 				() => {
-					toggleMarkerInfo(marker);
+					marker.setAnimation(window.google.maps.Animation.BOUNCE);
+					setTimeout(function() { marker.setAnimation(null); }, 750);
+					infoWindow.setContent(marker.content);
+					infoWindow.open(map, marker);
 				});
-		}
-		
-		function toggleMarkerInfo(marker) {
-			infoWindow.close();
-			marker.setAnimation(window.google.maps.Animation.BOUNCE);
-			setTimeout(function() { marker.setAnimation(null); }, 750);
-			infoWindow.setContent(marker.content);
-			infoWindow.setPosition(marker.position);
-			infoWindow.open(map);
 		}
 
 
 
 		// todo: change button contents to 'current-location.svg' on smaller screens
-		// Add button to get current location and center the map there
-		@*		const panToButton = document.createElement("div");
+		// Create button to get current location and center the map there
+		const panToButton = document.createElement("div");
 		panToButton.textContent = "Current Location";
-		panToButton.classList.add("map-panTo-button");
+		panToButton.classList.add("panTo-button");
 		map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(panToButton);
 		panToButton.addEventListener("click",
 			() => {
@@ -127,11 +125,11 @@
 			infoWindow.setPosition(pos);
 			infoWindow.setContent(
 				browserHasGeolocation
-					? "Error: The Geolocation service failed."
-					: "Error: Your browser doesn't support geolocation."
+				? "Error: The Geolocation service failed."
+				: "Error: Your browser doesn't support geolocation."
 			);
 			infoWindow.open(map);
-		}*@
+		}
 	}
 // ReSharper restore PossiblyUnassignedProperty
 </script>
