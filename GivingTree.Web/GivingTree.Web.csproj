@@ -75,11 +75,14 @@
       <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.8.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.8.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.8.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -126,8 +129,8 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.8.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -274,136 +277,229 @@
     <Content Include="Content\bootstrap.min.css.map">
       <DependentUpon>bootstrap.min.css</DependentUpon>
     </Content>
-    <Content Include="Content\Images\Optimized\Compressed\apple.ico">
-      <DependentUpon>apple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\apple.png" />
-    <Content Include="Content\Images\Optimized\Compressed\cherry.ico">
-      <DependentUpon>cherry.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\cherry.png" />
-    <Content Include="Content\Images\Optimized\Compressed\fig-purple.ico">
-      <DependentUpon>fig-purple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\fig-purple.png" />
-    <Content Include="Content\Images\Optimized\Compressed\fig.ico">
-      <DependentUpon>fig.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\fig.png" />
-    <Content Include="Content\Images\Optimized\Compressed\pear.ico">
-      <DependentUpon>pear.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\pear.png" />
-    <Content Include="Content\Images\Optimized\Compressed\persimmon.ico">
-      <DependentUpon>persimmon.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\persimmon.png" />
-    <Content Include="Content\Images\Optimized\Compressed\plum-leaf.ico">
-      <DependentUpon>plum-leaf.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\plum-leaf.png" />
-    <Content Include="Content\Images\Optimized\Compressed\plum.ico">
-      <DependentUpon>plum.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Compressed\plum.png" />
-    <Content Include="Content\Images\Optimized\Quality\apple.ico">
-      <DependentUpon>apple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\cherry.ico">
-      <DependentUpon>cherry.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\fig-purple.ico">
-      <DependentUpon>fig-purple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\fig.ico">
-      <DependentUpon>fig.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\pear.ico">
-      <DependentUpon>pear.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\persimmon.ico">
-      <DependentUpon>persimmon.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\plum-leaf.ico">
-      <DependentUpon>plum-leaf.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Optimized\Quality\plum.ico">
-      <DependentUpon>plum.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\apple-120x120.png">
-      <DependentUpon>apple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\apple-512x512.png">
-      <DependentUpon>apple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\apple.ico">
-      <DependentUpon>apple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\apple.png">
-      <DependentUpon>apple.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\apple.svg" />
-    <Content Include="Content\Images\Original\plum-leaf.ico">
-      <DependentUpon>plum-leaf.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\plum-leaf.png">
-      <DependentUpon>plum-leaf.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\plum-leaf.svg" />
-    <Content Include="Content\Images\Original\plum.ico">
-      <DependentUpon>plum.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\plum.png">
-      <DependentUpon>plum.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\plum.svg" />
-    <Content Include="Content\Images\Original\cherry.ico">
-      <DependentUpon>cherry.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\cherry.png">
-      <DependentUpon>cherry.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\cherry.svg" />
-    <Content Include="Content\Images\Original\current-location-512x512.jpg">
-      <DependentUpon>current-location.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\current-location.svg" />
-    <Content Include="Content\Images\Original\fig-purple.ico">
-      <DependentUpon>fig-purple.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\fig-purple.png">
-      <DependentUpon>fig-purple.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\fig-purple.svg" />
-    <Content Include="Content\Images\Original\fig.ico">
-      <DependentUpon>fig.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\fig.png">
-      <DependentUpon>fig.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\fig.svg" />
-    <Content Include="Content\Images\Original\pear.ico">
-      <DependentUpon>pear.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\pear.png">
-      <DependentUpon>pear.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\pear.svg" />
-    <Content Include="Content\Images\Original\persimmon.ico">
-      <DependentUpon>persimmon.png</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\persimmon.png">
-      <DependentUpon>persimmon.svg</DependentUpon>
-    </Content>
-    <Content Include="Content\Images\Original\persimmon.svg" />
-    <Content Include="Content\Images\Optimized\Quality\apple.png" />
-    <Content Include="Content\Images\Optimized\Quality\cherry.png" />
-    <Content Include="Content\Images\Optimized\Quality\fig-purple.png" />
-    <Content Include="Content\Images\Optimized\Quality\fig.png" />
-    <Content Include="Content\Images\Optimized\Quality\pear.png" />
-    <Content Include="Content\Images\Optimized\Quality\persimmon.png" />
-    <Content Include="Content\Images\Optimized\Quality\plum-leaf.png" />
-    <Content Include="Content\Images\Optimized\Quality\plum.png" />
+    <Content Include="Content\Images\Arrows\green-arrow-up-512x512.png" />
+    <Content Include="Content\Images\Arrows\green-arrow-up.svg" />
+    <Content Include="Content\Images\Arrows\red-arrow-down-512x512.png" />
+    <Content Include="Content\Images\Arrows\red-arrow-down.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\apple-flat.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline-filled-color\apple-outline-filled.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-outline\apple-outline.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Apple\apple-solid\apple-solid.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-flat-background\cherries-flat.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline-filled-color\cherries-outline-filled.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-outline\cherries-outline.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Cherries\cherries-solid\cherries-solid.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Fig Purple\fig-purple-256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Fig Purple\fig-purple.ico" />
+    <Content Include="Content\Images\Fruit\Flat\Fig Purple\fig-purple.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-flat-background\orange-flat.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline-filled-color\orange-outline-filled.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-outline\orange-outline.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Orange\orange-solid\orange-solid.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-flat-background\pear-flat.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline-filled-color\pear-outline-filled.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-outline\pear-outline 5.17.36 PM.svg" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\128x128.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\16x16.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\256x256.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\32x32.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\512x512.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\64x64.png" />
+    <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\pear-solid.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Apple\Apple-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Apple\Apple-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Apple\Apple.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Apple\Apple.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Banana\Banana-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Banana\Banana-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Banana\Banana.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Banana\Banana.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Cherry\Cherry-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Cherry\Cherry-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Cherry\Cherry.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Cherry\Cherry.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Fig\fig-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Fig\fig.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Fig\fig.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Grape\Grape-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Grape\Grape-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Grape\Grape.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Grape\Grape.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Kiwi\Kiwi-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Kiwi\Kiwi-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Kiwi\Kiwi.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Kiwi\Kiwi.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Lemon\Lemon-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Lemon\Lemon-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Lemon\Lemon.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Lemon\Lemon.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Mangosteen\Mangosteen-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Mangosteen\Mangosteen-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Mangosteen\Mangosteen.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Mangosteen\Mangosteen.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Mango\Mango-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Mango\Mango-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Mango\Mango.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Mango\Mango.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Pear\pear-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Pear\pear-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Pear\Pear.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Pear\pear.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Persimmon\persimmon-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Persimmon\persimmon-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Persimmon\persimmon.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Persimmon\persimmon.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Plum\Plum-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Plum\Plum-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Plum\Plum-Shine-Blue-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Plum\Plum.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Plum\Plum.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Strawberry\Strawberry-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Strawberry\Strawberry-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Strawberry\Strawberry.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Strawberry\Strawberry.svg" />
+    <Content Include="Content\Images\Fruit\Shine\Watermelon\Watermelon-256x256.png" />
+    <Content Include="Content\Images\Fruit\Shine\Watermelon\Watermelon-512x512.png" />
+    <Content Include="Content\Images\Fruit\Shine\Watermelon\Watermelon.ico" />
+    <Content Include="Content\Images\Fruit\Shine\Watermelon\Watermelon.svg" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_100.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_1024.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_114.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_144.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_250.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_512.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_58.png" />
+    <Content Include="Content\Images\Login\Facebook\Black\f_logo_RGB-Black_72.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_100.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_1024.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_114.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_144.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_250.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_512.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_58.png" />
+    <Content Include="Content\Images\Login\Facebook\Color\f_logo_RGB-Blue_72.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_100.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_1024.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_114.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_144.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_250.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_512.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_58.png" />
+    <Content Include="Content\Images\Login\Facebook\Grey\f_logo_RGB-Grey_72.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_100.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_1024.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_114.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_144.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_250.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_512.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_58.png" />
+    <Content Include="Content\Images\Login\Facebook\White\f_logo_RGB-White_72.png" />
+    <Content Include="Content\Images\Login\Google\128x128.png" />
+    <Content Include="Content\Images\Login\Google\16x16.png" />
+    <Content Include="Content\Images\Login\Google\256x256.png" />
+    <Content Include="Content\Images\Login\Google\32x32.png" />
+    <Content Include="Content\Images\Login\Google\512x512.png" />
+    <Content Include="Content\Images\Login\Google\64x64.png" />
+    <Content Include="Content\Images\Login\Google\google.svg" />
+    <Content Include="Content\Images\Login\LinkedIn\128x128.png" />
+    <Content Include="Content\Images\Login\LinkedIn\16x16.png" />
+    <Content Include="Content\Images\Login\LinkedIn\256x256.png" />
+    <Content Include="Content\Images\Login\LinkedIn\32x32.png" />
+    <Content Include="Content\Images\Login\LinkedIn\512x512.png" />
+    <Content Include="Content\Images\Login\LinkedIn\64x64.png" />
+    <Content Include="Content\Images\Login\LinkedIn\linkedin.svg" />
+    <Content Include="Content\Images\Misc\current-location-512x512.jpg" />
+    <Content Include="Content\Images\Misc\current-location.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -449,9 +545,7 @@
     <Content Include="Scripts\esm\popper.min.js.map">
       <DependentUpon>popper.min.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\index.js.flow">
-      <DependentUpon>index.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\index.js.flow" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js">
       <DependentUpon>jquery-3.5.1.js</DependentUpon>
@@ -632,7 +726,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js">
       <DependentUpon>jquery.validate.js</DependentUpon>
     </None>
-    <Content Include="Views\Shared\_AdditonalUserDetails.cshtml" />
+    <Content Include="Views\Shared\_AdditionalUserDetails.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>

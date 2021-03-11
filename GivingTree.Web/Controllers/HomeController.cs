@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using GivingTree.Data.Models;
 using GivingTree.Data.Services;
 
 namespace GivingTree.Web.Controllers
@@ -20,7 +22,7 @@ namespace GivingTree.Web.Controllers
 		public ActionResult Index()
 		{
 			//
-			var model = _db.GetAll();
+			IEnumerable<FruitTree> model = _db.GetAll();
 			return View(model);
 		}
 
@@ -31,7 +33,7 @@ namespace GivingTree.Web.Controllers
 			return View();
 		}
 
-		[Authorize]
+
 		public ActionResult Contact()
 		{
 			ViewBag.Message = "Your contact page.";

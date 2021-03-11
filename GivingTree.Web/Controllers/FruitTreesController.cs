@@ -178,7 +178,7 @@ namespace GivingTree.Web.Controllers
 		        markers += $"'Name': '{formattedName}', ";
 		        markers += $"'Type': '{m.Fruit}', ";
 		        markers += $"'Description': '{formattedDescription}', ";
-		        markers += $"'Icon': '/Content/Images/Optimized/Compressed/{m.Fruit}.ico', ";
+		        markers += $"'Icon': '/Content/Images/Fruit/Shine/{m.Fruit}/{m.Fruit}.ico', ";
 		        markers += $"'Latitude': '{m.Latitude}', ";
 		        markers += $"'Longitude': '{m.Longitude}' ";
 		        markers += "},";

@@ -10,10 +10,10 @@ namespace GivingTree.Web.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        public string UserAboutMeSection { get; set; }
-        public FruitType UserFavoriteFruit { get; set; }
-        public FruitType UserSecondFavoriteFruit { get; set; }
-    }
+		public string UserAboutMeSection { get; set; }
+		public FruitType UserFavoriteFruit { get; set; }
+		public FruitType UserSecondFavoriteFruit { get; set; }
+	}
 
     public class ExternalLoginListViewModel
     {

@@ -1,4 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+
+
 
 namespace GivingTree.Data.Models
 {
@@ -9,8 +14,6 @@ namespace GivingTree.Data.Models
 	{
 		public int Id { get; set; }
 
-		// regex specifies letters only, first letter must be uppercase, no whitespace, numbers, or special characters allowed.
-		// [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
 		[Required]
 		public string Name { get; set; }
 
@@ -18,8 +21,6 @@ namespace GivingTree.Data.Models
 		[Required]
 		public FruitType Fruit { get; set; }
 
-		// regex specifies first char must be uppercase, allows subsequent special characters and numbers
-		// [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
 		[Required]
 		public string Description { get; set; }
 
@@ -29,15 +30,6 @@ namespace GivingTree.Data.Models
 		[Required]
 		public double Longitude { get; set; }
 
-/*		[RegularExpression()]
-		public string StarRating { get; set; }*/
-
-/*		[Required]
-		public DbGeography Location { get; set; }
-
-		[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
-		public byte[] Image { get; set; }
-*/
 
 	}
 
@@ -56,34 +48,72 @@ namespace GivingTree.Data.Models
 }
 
 
+/*
+ 
+		[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.svg)$", ErrorMessage = "Only Image files allowed.")]
+		public byte[] FruitTreeImage { get; set; }
+		public string ImageUrl { get; set; }
 
+		[RegularExpression("([0-9]+)")]
+		public int UpVote { get; set; }
+
+		[RegularExpression("([0-9]+)")]
+		public int DownVote { get; set; }
+
+ */
 
 // A View Model is a class whose only purpose is to encapsulate and carry all the information that is needed to render a view. Some of the models in the application may serve a dual purpose. 
 
+/* GENERAL DEBUGGING NOTES
+ 
+ * Autos and Locals Windows*
+ * The Autos and Locals windows show variable values while you are debugging. The windows are only available during a debugging session. The Autos window shows variables used around the current breakpoint. The Locals window shows variables defined in the local scope, which is usually the current function or method.
+ 
 
-/*using (var context = new FruitTreeContext ())
-{
-	context.FruitTrees.Add(new FruitTree()
+ * Immediate Window *
+Use the Immediate window to debug and evaluate expressions, execute statements, and print variable values. The Immediate window evaluates expressions by building and using the currently selected project.
+
+To display the Immediate window, open a project for editing, and then choose Debug > Windows > Immediate or press Ctrl+Alt+I. You can also enter Debug.Immediate in the Command window.
+
+Typing this into the immediate window gives the same results, the '?' form is shorthand. Both return "Google":
+	>Debug.Print loginProviders[0].Caption
+	? loginProviders[0].Caption
+
+ */
+
+
+
+
+// STAR RATING 
+// in FruitTree class:
+/*		public int StarRateCount
+		{
+			get { return StarRatings.Count; }
+		}
+
+		public int StarRateTotal
+		{
+			get
+			{
+				return (StarRatings.Sum(m => m.StarRate));
+			}
+		}
+
+		public virtual ICollection<StarRating> StarRatings { get; set; }
+*/
+// in StarRating.cs:
+/*
+ 
+ 	public class StarRating
 	{
-		Name = "Lorem Ipsum",
-		Location = DbGeography.FromText("POINT(-122.336106 47.605049)"),
-	});
+		[Key]
+		public int StarRateId { get; set; }
 
-	context.FruitTrees.Add(new FruitTree()
-	{
-		Name = "Lorem Ipsum 2",
-		Location = DbGeography.FromText("POINT(-122.335197 47.646711)"),
-	});
+		public int StarRate { get; set; }
 
-	context.SaveChanges();
+		public int FruitTreeId { get; set; }
 
-	var myLocation = DbGeography.FromText("POINT(-122.296623 47.640405)");
-
-	var FruitTree = (from t in context.FruitTrees
-		orderby t.Location.Distance(myLocation)
-		select t).FirstOrDefault();
-
-	Console.WriteLine(
-		"The closest FruitTree to you is: {0}.",
-		FruitTree.Name);
-}*/
+		[ForeignKey("FruitTreeId")]
+		public virtual FruitTree FruitTree { get; set; }
+}
+ */
