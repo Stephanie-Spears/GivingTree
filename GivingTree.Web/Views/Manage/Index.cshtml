@@ -1,6 +1,7 @@
-﻿@model GivingTree.Web.Models.IndexViewModel
+﻿@using Microsoft.AspNet.Identity
+@model GivingTree.Web.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Manage details for " + User.Identity.GetUserName();
 }
 
 <h2>@ViewBag.Title.</h2>

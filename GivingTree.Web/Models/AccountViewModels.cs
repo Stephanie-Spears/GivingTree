@@ -6,6 +6,11 @@ namespace GivingTree.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
+	    /* todo: implement optional unique username that doesn't affect logins, password recovery, email confirmation, etc. */
+	    [DataType(DataType.Text)]
+	    [Display(Name = "Username")]
+	    public string UserName { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -69,7 +74,12 @@ namespace GivingTree.Web.Models
 
     public class RegisterViewModel
     {
-        [Required]
+		/* todo: implement optional unique username that doesn't affect logins, password recovery, email confirmation, etc. */
+	    [DataType(DataType.Text)]
+	    [Display(Name = "Username")]
+	    public string UserName { get; set; }
+
+	    [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

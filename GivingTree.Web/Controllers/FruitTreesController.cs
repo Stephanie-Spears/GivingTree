@@ -69,7 +69,7 @@ namespace GivingTree.Web.Controllers
             }
             catch
             {
-	            TempData["Message"] = "There was an error with saving the tree";
+	            TempData.Message("There was an error with saving the tree");
                 return View();
             }
         }
@@ -101,14 +101,14 @@ namespace GivingTree.Web.Controllers
 	            if(ModelState.IsValid)
 	            {
 		            _db.Update(fruitTree);
-		            TempData["Message"] = "You have saved the tree!";
+		            TempData.Message("You have saved the tree!");
 		            return RedirectToAction("Details", new { id = fruitTree.Id });
 	            }
 	            return View(fruitTree);
             }
             catch
             {
-	            TempData["Message"] = "There was an error with saving the tree";
+	            TempData.Message("There was an error with saving the tree");
 	            return View(fruitTree);
             }
         }
@@ -139,7 +139,7 @@ namespace GivingTree.Web.Controllers
             }
             catch
             {
-	            TempData["Message"] = "There was an error with deleting the tree";
+	            TempData.Message("There was an error with deleting the tree");
                 return View();
             }
         }

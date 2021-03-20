@@ -41,10 +41,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				@if (TempData["Message"] != null)
+				@if (TempData.Message() != null)
 				{
 					<div class="alert alert-info">
-						@TempData["Message"]
+						@TempData.Message()
 					</div>
 				}
 				@RenderBody()

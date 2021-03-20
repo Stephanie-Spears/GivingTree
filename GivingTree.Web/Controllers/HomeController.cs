@@ -7,7 +7,7 @@ namespace GivingTree.Web.Controllers
 {
 	[RequireHttps]
 	public class HomeController : Controller
-	{
+	{ 
 
 		//
 		private IFruitTreeData _db;
@@ -18,7 +18,6 @@ namespace GivingTree.Web.Controllers
 			this._db = db;
 		}
 
-		//
 		public ActionResult Index()
 		{
 			//
@@ -28,11 +27,11 @@ namespace GivingTree.Web.Controllers
 
 		public ActionResult About()
 		{
+
 			ViewBag.Message = "Your application description page.";
 
 			return View();
 		}
-
 
 		public ActionResult Contact()
 		{

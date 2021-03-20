@@ -2,6 +2,13 @@
 @model GivingTree.Web.Models.ExternalLoginConfirmationViewModel
 
 <div class="form-group">
+	@Html.LabelFor(m => m.UserName, new { @class = "col col-form-label" })
+	<div class="col">
+		@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+	</div>
+</div>
+
+<div class="form-group">
 	@Html.LabelFor(m => m.UserAboutMeSection, new { @class = "col col-form-label" })
 	<div class="col">
 		@Html.TextAreaFor(m => m.UserAboutMeSection, new { @class = "form-control" })

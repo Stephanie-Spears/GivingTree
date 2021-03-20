@@ -22,6 +22,7 @@ namespace GivingTree.Data.Models
 		public FruitType Fruit { get; set; }
 
 		[Required]
+		[DataType(DataType.Text)]
 		public string Description { get; set; }
 
 		[Required]
@@ -29,7 +30,6 @@ namespace GivingTree.Data.Models
 
 		[Required]
 		public double Longitude { get; set; }
-
 
 	}
 
@@ -48,6 +48,7 @@ namespace GivingTree.Data.Models
 }
 
 
+
 /*
  
 		[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.svg)$", ErrorMessage = "Only Image files allowed.")]
@@ -61,26 +62,6 @@ namespace GivingTree.Data.Models
 		public int DownVote { get; set; }
 
  */
-
-// A View Model is a class whose only purpose is to encapsulate and carry all the information that is needed to render a view. Some of the models in the application may serve a dual purpose. 
-
-/* GENERAL DEBUGGING NOTES
- 
- * Autos and Locals Windows*
- * The Autos and Locals windows show variable values while you are debugging. The windows are only available during a debugging session. The Autos window shows variables used around the current breakpoint. The Locals window shows variables defined in the local scope, which is usually the current function or method.
- 
-
- * Immediate Window *
-Use the Immediate window to debug and evaluate expressions, execute statements, and print variable values. The Immediate window evaluates expressions by building and using the currently selected project.
-
-To display the Immediate window, open a project for editing, and then choose Debug > Windows > Immediate or press Ctrl+Alt+I. You can also enter Debug.Immediate in the Command window.
-
-Typing this into the immediate window gives the same results, the '?' form is shorthand. Both return "Google":
-	>Debug.Print loginProviders[0].Caption
-	? loginProviders[0].Caption
-
- */
-
 
 
 
