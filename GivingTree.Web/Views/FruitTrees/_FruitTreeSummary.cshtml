@@ -1,23 +1,27 @@
-﻿@model GivingTree.Data.Models.FruitTree
-
-@*<div class="card">
-	<div class="card-header">
-		<h3 class="card-title">@Model.Name</h3>
-	</div>
-	<div class="card-body">
-		@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-		@Html.ActionLink("Details", "Details", new { id = Model.Id }) |
-		@Html.ActionLink("Delete", "Delete", new { id = Model.Id })
-	</div>
-</div>*@
+﻿@using Microsoft.AspNet.Identity
+@model GivingTree.Data.Models.FruitTree
 
 <div class="card">
 	<div class="card-body">
 		<div class="card-header">
 			<h3 class="card-title">@Model.Name</h3>
+			@*<div><span>@Model.StarRatingAverage</span>@Model.ReviewList.Count</div>*@
 		</div>
-		@Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
-		@Html.ActionLink("Details", "Details", new {id = Model.Id}) |
-		@Html.ActionLink("Delete", "Delete", new {id = Model.Id})
+
+		
+		@Html.ActionLink("Details", "Details", new { id = Model.Id })
+
+		@if (Model.CreatedByUserId == User.Identity.GetUserId())
+		{
+			@Html.Encode(" | ")
+			@Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+		}
+		
+		@if (Model.CreatedByUserId == User.Identity.GetUserId())
+		{
+			@Html.Encode(" | ")
+			@Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+		}
+
 	</div>
 </div>

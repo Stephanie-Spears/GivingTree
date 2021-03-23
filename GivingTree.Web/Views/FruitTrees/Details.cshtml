@@ -1,4 +1,5 @@
-﻿@model GivingTree.Data.Models.FruitTree
+﻿@using Microsoft.AspNet.Identity
+@model GivingTree.Data.Models.FruitTree
 
 @{
 	ViewBag.Title = "Details";
@@ -30,12 +31,6 @@
 		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.Description)
 		</dd>
-		@*<dt class="col-sm-3">
-			@Html.DisplayNameFor(model => model.Location)
-		</dt>
-		<dd class="col-sm-9">
-			@Html.DisplayFor(model => model.Location)
-		</dd>*@
 
 		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.Latitude)
@@ -49,16 +44,27 @@
 		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.Longitude)
 		</dd>
-
-@*		<dt class="col-sm-3">
-			@Html.DisplayNameFor(model => model.Image)
+		<dt class="col-sm-3">
+			@Html.DisplayNameFor(model => model.CreatedByUserName)
 		</dt>
 		<dd class="col-sm-9">
-			@Html.DisplayFor(model => model.Image)
-		</dd>*@
+			@Html.DisplayFor(model => model.CreatedByUserName)
+		</dd>
+		
+		<dt class="col-sm-3">
+			@Html.DisplayNameFor(model => model.LastUpdated)
+		</dt>
+		<dd class="col-sm-9">
+			@Html.DisplayFor(model => model.LastUpdated)
+		</dd>
 	</dl>
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@if (Model.CreatedByUserId == User.Identity.GetUserId())
+	{
+		@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+		@Html.Encode(" | ")
+	}
+
 	@Html.ActionLink("Back to List", "Index")
 </p>

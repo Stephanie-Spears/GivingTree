@@ -38,7 +38,7 @@ namespace GivingTree.Data.Services
 		public IEnumerable<FruitTree> GetAll()
 		{
 			return from t in _db.FruitTrees
-				orderby t.Name
+				orderby t.LastUpdated
 				select t;
 		}
 
@@ -53,5 +53,42 @@ namespace GivingTree.Data.Services
 			entry.State = EntityState.Modified;
 			_db.SaveChanges();
 		}
+
+
+		//
+		//public DbSet<FruitTree> FruitTrees { get; set; }
+
+		//public DbSet<Review> Reviews { get; set; }
+
+		//public DbSet<Image> Images { get; set; }
+
+		//public FruitTree FindFruitTreeBySku(string treeSku)
+		//	=> FruitTrees.FirstOrDefault(x => x.TreeSKU == treeSku);
+
+		//public FruitTreeRating GetFruitTreeRating(string treeSku)
+		//{
+		//	IQueryable<Review> reviews = Reviews.Where(x => x.TreeSKU == treeSku);
+
+		//	return new FruitTreeRating
+		//	{
+		//		TreeSKU = treeSku,
+		//		Rating = reviews.Average(x => (double?)x.Rating),
+		//		ReviewCount = reviews.Count(),
+		//	};
+		//}
+
+		//public IQueryable<FruitTreeRating> GetFruitTreeRatings(IEnumerable<string> skus)
+		//{
+		//	return
+		//		Reviews
+		//			.Where(x => skus.Distinct().Contains(x.TreeSKU))
+		//			.GroupBy(x => x.TreeSKU)
+		//			.Select(reviews => new FruitTreeRating
+		//			{
+		//				TreeSKU = reviews.Key,
+		//				Rating = reviews.Average(x => x.Rating),
+		//				ReviewCount = reviews.Count(),
+		//			});
+		//}
 	}
 }

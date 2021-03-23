@@ -1,4 +1,5 @@
-﻿@model GivingTree.Data.Models.FruitTree
+﻿@using Microsoft.AspNet.Identity
+@model GivingTree.Data.Models.FruitTree
 
 @{
 	ViewBag.Title = "Create";
@@ -51,6 +52,13 @@
 			@Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
 		</div>
 	</div>
+
+	@Html.HiddenFor(model => model.CreatedByUserId, new { Value = User.Identity.GetUserId()})
+	@Html.HiddenFor(model => model.CreatedByUserName, new { Value = User.Identity.GetUserName()})
+	@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now})
+
+	//	@Html.Partial("_Review")
+
 
 	<div class="form-group">
 		<div class="col">

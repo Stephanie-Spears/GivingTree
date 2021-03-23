@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using GivingTree.Data.Models;
 using GivingTree.Data.Services;
+using Microsoft.AspNet.Identity;
 
 namespace GivingTree.Web.Controllers
 {
@@ -40,6 +41,18 @@ namespace GivingTree.Web.Controllers
 	        {
 		        return View("NotFound");
 	        }
+
+			//
+	        //var imageIds =
+		       // model
+			      //  .Images
+			      //  .Select(img => img.Id)
+			      //  .ToArray();
+
+	        //ViewData["Rating"] = _db.GetFruitTreeRating(model.TreeSKU);
+	        //ViewData["Images"] = imageIds;
+	        //
+
 	        return View(model);
         }
 
@@ -62,7 +75,7 @@ namespace GivingTree.Web.Controllers
             {
 	            if (ModelState.IsValid)
 	            {
-                    _db.Add(fruitTree);
+		            _db.Add(fruitTree);
                     return RedirectToAction("Details", new { id = fruitTree.Id });
 	            }
 	            return View();
@@ -80,9 +93,9 @@ namespace GivingTree.Web.Controllers
         public ActionResult Edit(int id)
         {
 	        var model = _db.Get(id);
-	        if(model == null)
+	        if(model == null || model.CreatedByUserId != User.Identity.GetUserId())
 	        {
-		        return HttpNotFound();
+		        return View("NotFound");
 	        }
 
 	        ViewBag.Markers = GetMapsMarkers();
@@ -95,10 +108,10 @@ namespace GivingTree.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FruitTree fruitTree)
-        {
-            try
+        {				
+	        try
             {
-	            if(ModelState.IsValid)
+	            if(ModelState.IsValid && fruitTree.CreatedByUserId == User.Identity.GetUserId())
 	            {
 		            _db.Update(fruitTree);
 		            TempData.Message("You have saved the tree!");
@@ -119,7 +132,7 @@ namespace GivingTree.Web.Controllers
         public ActionResult Delete(int id)
         {
 	        var model = _db.Get(id);
-	        if(model == null)
+	        if(model == null || model.CreatedByUserId != User.Identity.GetUserId())
 	        {
 		        return View("NotFound");
 	        }
@@ -134,7 +147,11 @@ namespace GivingTree.Web.Controllers
         {
             try
             {
-	            _db.Delete(id);
+	            var model = _db.Get(id);
+	            if (model.CreatedByUserId == User.Identity.GetUserId())
+	            { 
+		            _db.Delete(id);
+	            }
 	            return RedirectToAction("Index");
             }
             catch

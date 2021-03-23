@@ -165,9 +165,10 @@ namespace GivingTree.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                //var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+	            var user = new ApplicationUser {UserName = model.Email, UserProfileName = model.UserProfileName, Email = model.Email, UserAboutMeSection = model.UserAboutMeSection, UserFavoriteFruit = model.UserFavoriteFruit};
+	            //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+	            var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
 	                string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
@@ -201,7 +202,7 @@ namespace GivingTree.Web.Controllers
         {
 	        string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
 	        string callbackUrl = Url.Action("ConfirmEmail", "Account",
-		        new { userId, code }, protocol: Request.Url.Scheme);
+		        new { userId, code }, protocol: Request.Url?.Scheme);
 	        await UserManager.SendEmailAsync(userId, subject,
 		        "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
@@ -235,7 +236,7 @@ namespace GivingTree.Web.Controllers
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                  string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                 string callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code }, protocol: Request.Url.Scheme);		
+                 string callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code }, protocol: Request.Url?.Scheme);		
                  await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                  return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -390,9 +391,12 @@ namespace GivingTree.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserAboutMeSection = model.UserAboutMeSection, UserFavoriteFruit = model.UserFavoriteFruit, UserSecondFavoriteFruit = model.UserSecondFavoriteFruit };  
-              //  var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
-                var result = await UserManager.CreateAsync(user);
+
+				/* var user = new ApplicationUser { UserName = model.Email, UserProfileName = model.UserProfileName, Email = model.Email, UserAboutMeSection = model.UserAboutMeSection, UserFavoriteFruit = model.UserFavoriteFruit};  */
+
+	            var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+
+	            var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);

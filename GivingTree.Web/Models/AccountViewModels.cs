@@ -6,7 +6,6 @@ namespace GivingTree.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-	    /* todo: implement optional unique username that doesn't affect logins, password recovery, email confirmation, etc. */
 	    [DataType(DataType.Text)]
 	    [Display(Name = "Username")]
 	    public string UserName { get; set; }
@@ -15,10 +14,13 @@ namespace GivingTree.Web.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+/*        [Display(Name = "User Profile Name")]
+        public string UserProfileName { get; set; }
+        [Display(Name = "User About Me Section")]
 		public string UserAboutMeSection { get; set; }
-		public FruitType UserFavoriteFruit { get; set; }
-		public FruitType UserSecondFavoriteFruit { get; set; }
-	}
+		[Display(Name = "User Favorite Fruit")]
+		public FruitType UserFavoriteFruit { get; set; }*/
+    }
 
     public class ExternalLoginListViewModel
     {
@@ -74,7 +76,14 @@ namespace GivingTree.Web.Models
 
     public class RegisterViewModel
     {
-		/* todo: implement optional unique username that doesn't affect logins, password recovery, email confirmation, etc. */
+	    [Display(Name = "User Profile Name")]
+		public string UserProfileName { get; set; }
+		[Display(Name = "User About Me Section")]
+		public string UserAboutMeSection { get; set; }
+		[Display(Name = "User Favorite Fruit")]
+		public FruitType UserFavoriteFruit { get; set; }
+
+
 	    [DataType(DataType.Text)]
 	    [Display(Name = "Username")]
 	    public string UserName { get; set; }

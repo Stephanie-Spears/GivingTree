@@ -119,6 +119,7 @@ web.config:
 ==========================================================================
 * (Using Extension Methods to Remove Magic Strings) *
 --------------------------------------------------------------------------
+
 * A magic string is just a string that you've hardcoded into your program, possibly several times, or with unspecific/confusing variable names. The main problem with magic strings is that they aren't checked at compile time, which means that the program will build without any errors, even if you've accidentally introduced a typo, or if it's used in several places but you've forgotten to update the value in every one of those places. This can also be a problem if you unintentionally use the same variable name for two different strings (ie. name="username" and name="firstname") - so if you were to do a Find & Replace, you might accidentally rename both variables and break the program.
 * To guard against the type of bugs magic strings can introduce, it is better to instead declare the string as a constant, and perhaps in a common global file.
 
