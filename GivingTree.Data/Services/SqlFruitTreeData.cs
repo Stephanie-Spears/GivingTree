@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using GivingTree.Data.Models;
 
@@ -37,9 +38,7 @@ namespace GivingTree.Data.Services
 
 		public IEnumerable<FruitTree> GetAll()
 		{
-			return from t in _db.FruitTrees
-				orderby t.LastUpdated
-				select t;
+			return _db.FruitTrees.OrderBy(t => t.LastUpdated);
 		}
 
 		public void Update(FruitTree fruitTree)
@@ -48,47 +47,46 @@ namespace GivingTree.Data.Services
 
 			// passing the fruitTree object here tells Entity that this object should already exist in the database
 			// "entry" here tells Entity to start keeping track of this object
-			var entry = _db.Entry(fruitTree);
+			DbEntityEntry<FruitTree> entry = _db.Entry(fruitTree);
 			// tells Entity that the object is in a modified state, and that the changes need to be persisted. Entity Framework will issue an update statement for this fruitTree record and make sure that it matches the data in the database.
 			entry.State = EntityState.Modified;
 			_db.SaveChanges();
 		}
 
 
-		//
-		//public DbSet<FruitTree> FruitTrees { get; set; }
 
-		//public DbSet<Review> Reviews { get; set; }
 
-		//public DbSet<Image> Images { get; set; }
 
-		//public FruitTree FindFruitTreeBySku(string treeSku)
-		//	=> FruitTrees.FirstOrDefault(x => x.TreeSKU == treeSku);
 
-		//public FruitTreeRating GetFruitTreeRating(string treeSku)
+		//public void AddImage(File file)
 		//{
-		//	IQueryable<Review> reviews = Reviews.Where(x => x.TreeSKU == treeSku);
-
-		//	return new FruitTreeRating
-		//	{
-		//		TreeSKU = treeSku,
-		//		Rating = reviews.Average(x => (double?)x.Rating),
-		//		ReviewCount = reviews.Count(),
-		//	};
+		//	_db.Files.Add(file);
+		//	_db.SaveChanges();
 		//}
 
-		//public IQueryable<FruitTreeRating> GetFruitTreeRatings(IEnumerable<string> skus)
+		//public void DeleteImage(int? id)
 		//{
-		//	return
-		//		Reviews
-		//			.Where(x => skus.Distinct().Contains(x.TreeSKU))
-		//			.GroupBy(x => x.TreeSKU)
-		//			.Select(reviews => new FruitTreeRating
-		//			{
-		//				TreeSKU = reviews.Key,
-		//				Rating = reviews.Average(x => x.Rating),
-		//				ReviewCount = reviews.Count(),
-		//			});
+		//	_db.Files.Remove(_db.Files.First(f => f.FileType == FileType.Avatar));
+		//	_db.SaveChanges();
 		//}
+
+		public FruitTree GetImage(int? id)
+		{
+			return _db.FruitTrees.Include(t => t.Files).SingleOrDefault(t => t.Id == id);
+		}
+
+		//public IEnumerable<File> GetAllImages()
+		//{
+		//	return _db.Files.Select(t => t);
+		//}
+
+		//public void UpdateImage(File file)
+		//{
+		//	DbEntityEntry<File> entry = _db.Entry(file);
+		//	entry.State = EntityState.Modified;
+		//	_db.SaveChanges();
+		//}
+
+
 	}
 }

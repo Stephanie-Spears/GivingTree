@@ -12,9 +12,12 @@ namespace GivingTree.Data.Services
 		IEnumerable<FruitTree> GetAll();
 		void Update(FruitTree fruitTree);
 
-		//
-		//FruitTree FindFruitTreeBySku(string treeSku);
-		//FruitTreeRating GetFruitTreeRating(string treeSku);
-		//IQueryable<FruitTreeRating> GetFruitTreeRatings(IEnumerable<string> skus);
+
+		//void AddImage(File file);
+		//void DeleteImage(int? id);
+		FruitTree GetImage(int? id);
+		//IEnumerable<File> GetAllImages();
+		//void UpdateImage(File file);
+		
 	}
 }

@@ -17,38 +17,6 @@ namespace GivingTree.Data.Services
 	{
 		// Setting this name to FruitTrees here will make Entity Framework assume that there is a table in the database with the name FruitTrees
 		public DbSet<FruitTree> FruitTrees { get; set; }
-
-		//public DbSet<Review> Reviews { get; set; }
-
-		//public DbSet<Image> Images { get; set; }
-
-		//public FruitTree FindFruitTreeBySku(string treeSku)
-		//	=> FruitTrees.FirstOrDefault(x => x.TreeSKU == treeSku);
-
-		//public FruitTreeRating GetFruitTreeRating(string treeSku)
-		//{
-		//	IQueryable<Review> reviews = Reviews.Where(x => x.TreeSKU == treeSku);
-
-		//	return new FruitTreeRating
-		//	{
-		//		TreeSKU = treeSku,
-		//		Rating = reviews.Average(x => (double?)x.Rating),
-		//		ReviewCount = reviews.Count(),
-		//	};
-		//}
-
-		//public IQueryable<FruitTreeRating> GetFruitTreeRatings(IEnumerable<string> skus)
-		//{
-		//	return
-		//		Reviews
-		//			.Where(x => skus.Distinct().Contains(x.TreeSKU))
-		//			.GroupBy(x => x.TreeSKU)
-		//			.Select(reviews => new FruitTreeRating
-		//			{
-		//				TreeSKU = reviews.Key,
-		//				Rating = reviews.Average(x => x.Rating),
-		//				ReviewCount = reviews.Count(),
-		//			});
-		//}
+		public DbSet<File> Files { get; set; }
 	}
 }

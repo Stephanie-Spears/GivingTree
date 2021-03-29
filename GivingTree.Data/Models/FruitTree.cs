@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace GivingTree.Data.Models
 {
@@ -11,9 +10,6 @@ namespace GivingTree.Data.Models
 	public class FruitTree
 	{
 		public int Id { get; set; }
-
-//		[Required]
-//		public string TreeSKU { get; set; }
 
 		[Required]
 		public string Name { get; set; }
@@ -42,95 +38,10 @@ namespace GivingTree.Data.Models
 		[Display(Name = "Last Updated Timestamp")]
 		public DateTime LastUpdated { get; set; }
 
+		// this completes the association of a one-to-many relationship with the File entity
+		public virtual ICollection<File> Files { get; set; }
 
-		//public long? ThumbnailImageId { get; set; }
-		//public virtual Image ThumbnailImage { get; set; }
-
-		//public virtual ICollection<Image> Images { get; private set; }
-
-		//public FruitTree()
-		//{
-		//	Images = new List<Image>();
-		//}
-
-
-
-/*		// list of all reviews for tree -> each review contains the user id, rating id, tree id, star rating, user comments
-		public ICollection<Review> ReviewList { get; set; }
-
-		// calculated star rating average
-		public double? StarRatingAverage
-		{
-			get
-			{
-				//double starRatingTotal = ReviewList.Sum(review => review.StarRating);
-				//double starRatingAverage = (starRatingTotal) / (ReviewList.Count());
-				//return starRatingAverage;
-
-				return ReviewList.Average(review => review.StarRating);
-
-			}
-		}*/
-
-		// number of total ratings
-/*		public int ReviewCount
-		{
-			get
-			{
-				return ReviewList.Count();
-			}
-		}*/
 	}
 
 	/* todo: set up star rating system, connect user as creators of FruitTree posts (only creator can edit/delete their own posts), track who rates which locations, set regex for input validations, allow users to upload photos of locations */
 }
-
-
-
-/*
-		[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.svg)$", ErrorMessage = "Only Image files allowed.")]
-		public byte[] FruitTreeImage { get; set; }
-		public string ImageUrl { get; set; }
-
-		[RegularExpression("([0-9]+)")]
-		public int UpVote { get; set; }
-
-		[RegularExpression("([0-9]+)")]
-		public int DownVote { get; set; }
- */
-
-
-
-// STAR RATING 
-// in FruitTree class:
-/*		public int StarRateCount
-		{
-			get { return StarRatings.Count; }
-		}
-
-		public int StarRateTotal
-		{
-			get
-			{
-				return (StarRatings.Sum(m => m.StarRate));
-			}
-		}
-
-		public virtual ICollection<StarRating> StarRatings { get; set; }
-*/
-// in StarRating.cs:
-/*
- 
- 	public class StarRating
-	{
-		[Key]
-		public int StarRateId { get; set; }
-
-		public int StarRate { get; set; }
-
-		public int FruitTreeId { get; set; }
-
-		[ForeignKey("FruitTreeId")]
-		public virtual FruitTree FruitTree { get; set; }
-}
- */

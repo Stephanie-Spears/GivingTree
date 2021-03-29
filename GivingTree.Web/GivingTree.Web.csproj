@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -234,9 +236,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FruitTreesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\TempDataExtensions.cs" />
@@ -284,6 +286,12 @@
     <Content Include="Content\Images\Arrows\green-arrow-up.svg" />
     <Content Include="Content\Images\Arrows\red-arrow-down-512x512.png" />
     <Content Include="Content\Images\Arrows\red-arrow-down.svg" />
+    <Content Include="Content\Uploads\apple-tree-2.jpg" />
+    <Content Include="Content\Uploads\apple-tree.jpg" />
+    <Content Include="Content\Uploads\cherry-tree-2.jpg" />
+    <Content Include="Content\Uploads\cherry-tree.jpg" />
+    <Content Include="Content\Uploads\fig-tree-2.jpeg" />
+    <Content Include="Content\Uploads\fig-tree.jpg" />
     <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\128x128.png" />
     <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\16x16.png" />
     <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\256x256.png" />
@@ -399,6 +407,12 @@
     <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\512x512.png" />
     <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\64x64.png" />
     <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\pear-solid.svg" />
+    <Content Include="Content\Uploads\pear-tree-2.jpg" />
+    <Content Include="Content\Uploads\pear-tree.jpg" />
+    <Content Include="Content\Uploads\persimmon-tree-2.jpg" />
+    <Content Include="Content\Uploads\persimmon-tree.jpg" />
+    <Content Include="Content\Uploads\plum-tree-2.jpg" />
+    <Content Include="Content\Uploads\plum-tree.jpg" />
     <Content Include="Content\Images\Fruit\Shine\Apple\Apple-256x256.png" />
     <Content Include="Content\Images\Fruit\Shine\Apple\Apple-512x512.png" />
     <Content Include="Content\Images\Fruit\Shine\Apple\Apple.ico" />
@@ -503,7 +517,7 @@
     <Content Include="Content\Images\Login\LinkedIn\linkedin.svg" />
     <Content Include="Content\Images\Misc\current-location-512x512.jpg" />
     <Content Include="Content\Images\Misc\current-location.svg" />
-    <Content Include="Content\placeholder.jpeg" />
+    <Content Include="Content\Uploads\placeholder.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -736,13 +750,10 @@
     </None>
     <Content Include="Views\Shared\_AdditionalUserDetails.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
-    <Content Include="Views\Shared\_Review.cshtml" />
-    <Content Include="Views\Shared\_Rating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

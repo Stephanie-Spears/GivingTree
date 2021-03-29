@@ -7,7 +7,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm("Create", "FruitTrees", FormMethod.Post, new { @class = "", role = "form" }))
+@using (Html.BeginForm("Create", "FruitTrees", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 	@Html.AntiForgeryToken()
 
@@ -57,7 +57,12 @@
 	@Html.HiddenFor(model => model.CreatedByUserName, new { Value = User.Identity.GetUserName()})
 	@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now})
 
-	//	@Html.Partial("_Review")
+	<div class="form-group">
+		@Html.Label("Avatar", new {@class = "col col-form-label"})
+		<div class="col">
+			<input type="file" id="Avatar" name="upload" />
+		</div>
+	</div>
 
 
 	<div class="form-group">
