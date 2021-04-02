@@ -7,73 +7,76 @@
 
 <h2>Create</h2>
 
+
 @using (Html.BeginForm("Create", "FruitTrees", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 	@Html.AntiForgeryToken()
 
-	<h4>Trees</h4>
+	<div>
+		<h4>Trees</h4>
+		<hr />
 
-	<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.CreatedByUserId, new { Value = User.Identity.GetUserId()})
+		@Html.HiddenFor(model => model.CreatedByUserName, new { Value = User.Identity.GetUserName()})
+		@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now})
 
-	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-	<div class="form-group">
-		@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col col-form-label" })
-		<div class="col">
-			@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col col-form-label" })
+			<div class="col">
+				@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Fruit, htmlAttributes: new { @class = "col col-form-label" })
-		<div class="col">
-			@Html.EnumDropDownListFor(model => model.Fruit, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Fruit, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Fruit, htmlAttributes: new { @class = "col col-form-label" })
+			<div class="col">
+				@Html.EnumDropDownListFor(model => model.Fruit, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Fruit, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col col-form-label" })
-		<div class="col">
-			@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col col-form-label" })
+			<div class="col">
+				@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "col col-form-label" })
-		<div class="col">
-			@Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", id = "Latitude" } })
-			@Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "col col-form-label" })
+			<div class="col">
+				@Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", id = "Latitude" } })
+				@Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "col col-form-label" })
-		<div class="col">
-			@Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", id = "Longitude" } })
-			@Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "col col-form-label" })
+			<div class="col">
+				@Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", id = "Longitude" } })
+				@Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
-
-	@Html.HiddenFor(model => model.CreatedByUserId, new { Value = User.Identity.GetUserId()})
-	@Html.HiddenFor(model => model.CreatedByUserName, new { Value = User.Identity.GetUserName()})
-	@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now})
-
-	<div class="form-group">
-		@Html.Label("Avatar", new {@class = "col col-form-label"})
-		<div class="col">
-			<input type="file" id="Avatar" name="upload" />
-		</div>
-	</div>
 
 
-	<div class="form-group">
-		<div class="col">
-			@Html.Partial("_GoogleMapsBlock")
-		</div>
-	</div>
 
-	<div class="form-group">
-		<div class="col">
-			<input type="submit" value="Create" class="btn btn-dark" />
+		<div class="form-group">
+			@Html.Label("Avatar", new {@class = "col col-form-label"})
+			<div class="col">
+				<input type="file" id="Avatar" name="upload" />
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<div class="col">
+				@Html.Partial("_GoogleMapsBlock")
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col">
+				<input type="submit" value="Create" class="btn btn-dark" />
+			</div>
 		</div>
 	</div>
 }

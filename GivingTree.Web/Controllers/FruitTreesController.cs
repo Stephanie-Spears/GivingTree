@@ -129,9 +129,9 @@ namespace GivingTree.Web.Controllers
         }
 
         // POST: Student/Edit/5
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int id, HttpPostedFileBase upload)
+        public ActionResult Edit(int id, HttpPostedFileBase upload)
         {
 
 			// this right?
