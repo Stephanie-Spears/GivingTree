@@ -8,7 +8,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "FruitTree", null, FormMethod.Post, new { enctype = "multipart/form-data"}))
+@using (Html.BeginForm("Create", "FruitTree", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 	@Html.AntiForgeryToken()
 
@@ -17,11 +17,11 @@
 		<hr />
 
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-		@Html.HiddenFor(model => model.LastUpdated, new {Value = DateTime.Now})
+		@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now })
 
 		@*@Html.HiddenFor(model => model.CreatedByUserId, new { Value = User.Identity.GetUserId()})
-		@Html.HiddenFor(model => model.CreatedByUserName, new { Value = User.Identity.GetUserName()})
-		@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now})*@
+			@Html.HiddenFor(model => model.CreatedByUserName, new { Value = User.Identity.GetUserName()})
+			@Html.HiddenFor(model => model.LastUpdated, new { Value = DateTime.Now})*@
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col col-form-label" })
@@ -60,9 +60,9 @@
 		</div>
 
 		<div class="form-group">
-			@Html.Label("Photo", new {@class = "col col-form-label"})
+			@Html.Label("Photo", new { @class = "col col-form-label" })
 			<div class="col">
-				<input type="file" id="Photo" name="upload"/>
+				<input type="file" id="Photo" name="upload" />
 			</div>
 		</div>
 
@@ -75,12 +75,12 @@
 
 		<div class="form-group">
 			<div class="col">
-				<input type="submit" value="Create" class="btn btn-dark"/>
+				<input type="submit" value="Create" class="btn btn-dark" />
 			</div>
 		</div>
 	</div>
 }
-}
+
 
 <div class="col">
 	@Html.ActionLink("Back to List", "Index")
