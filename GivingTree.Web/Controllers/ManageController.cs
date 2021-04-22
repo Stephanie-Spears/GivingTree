@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using GivingTree.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using GivingTree.Web.Models;
 
 namespace GivingTree.Web.Controllers
 {

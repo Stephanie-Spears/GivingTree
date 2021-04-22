@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using GivingTree.Data.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 

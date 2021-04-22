@@ -8,10 +8,8 @@ namespace GivingTree.Web
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
 			// employ the custom routing via controller action decorations
 			routes.MapMvcAttributeRoutes();
-
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",

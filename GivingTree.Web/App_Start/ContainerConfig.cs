@@ -1,9 +1,9 @@
-﻿using System.Web.Mvc;
+﻿/*using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using GivingTree.Data.Services;
+using GivingTree.DAL;
 
-namespace GivingTree.Web
+namespace GivingTree
 {
 	// Set up Autofac Inversion of Control Dependency Injection, which will allow us to remove any hardcoded string referring to the database and instead configure the database that it points to dependent on the settings here (ie. if we want to switch between dev/release config, we can do it here)
 	// We also need to register this class in our Global.asax
@@ -23,9 +23,14 @@ namespace GivingTree.Web
 			// anywhere in the application we can now ask for IFruitTreeData, and receive whatever type is specified here. So in the future if we ever want to move away from using this type, we only need to make the change once, inside the RegisterType section
 			builder.RegisterType<SqlFruitTreeData>()
 				.As<IFruitTreeData>()
-				//
 				.InstancePerRequest();
 			builder.RegisterType<GivingTreeDbContext>().InstancePerRequest();
+
+			//builder.RegisterType<GivingTreeDbContext>()
+			//	.As<GivingTreeDbContext>()
+			//	.InstancePerRequest();
+			builder.RegisterType<GivingTreeDbContext>().InstancePerRequest();
+
 
 			// now we just need to create the container from ContainerBuilder
 			var container = builder.Build();
@@ -33,4 +38,4 @@ namespace GivingTree.Web
 			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 		}
 	}
-}
+}*/

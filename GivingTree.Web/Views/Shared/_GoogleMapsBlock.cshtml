@@ -1,8 +1,12 @@
 ﻿@using System.Configuration
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+@if (ViewBag.Markers == null)
+{
+	ViewBag.Markers = "";
+}
 
 <script>
-	// ReSharper disable PossiblyUnassignedProperty
 	function initMap() {
 		const mapMarkers = @Html.Raw(ViewBag.Markers);
 		const map = new window.google.maps.Map(document.getElementById("map"),
@@ -149,13 +153,17 @@
 			}
 		}
 	}
-// ReSharper restore PossiblyUnassignedProperty
 </script>
 
-<div id="map" class="card"></div>
-<div id="legend" class="card">
-	<h3 class="text-center">Legend</h3>
+<div class="form-group">
+	<div class="col">
+		<div id="map" class="card"></div>
+		<div id="legend" class="card">
+			<h3 class="text-center">Legend</h3>
+		</div>
+	</div>
 </div>
+
 
 @{
 	string googleMapsSrc = "https://maps.googleapis.com/maps/api/js?key=" + ConfigurationManager.AppSettings["GoogleMapsApiKey"] + "&callback=initMap&libraries=places&v=weekly";

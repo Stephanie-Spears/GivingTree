@@ -15,10 +15,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GivingTree.Web</RootNamespace>
     <AssemblyName>GivingTree.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44350</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -26,7 +27,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +39,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,8 +64,8 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.6.1.0\lib\netstandard2.0\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=6.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.6.2.0\lib\netstandard2.0\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=6.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.6.0.0\lib\net472\Autofac.Integration.Mvc.dll</HintPath>
@@ -77,14 +92,14 @@
       <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.9.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.10.2\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.9.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.10.2\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.9.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.10.2\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -113,26 +128,27 @@
     <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.1.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SendGrid, Version=9.22.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
-      <HintPath>..\packages\SendGrid.9.22.0\lib\net452\SendGrid.dll</HintPath>
+    <Reference Include="SendGrid, Version=9.23.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.23.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
     <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b2e6337a5d77bfbc, processorArchitecture=MSIL">
-      <HintPath>..\packages\starkbank-ecdsa.1.3.0\lib\net452\StarkbankEcdsa.dll</HintPath>
+      <HintPath>..\packages\starkbank-ecdsa.1.3.1\lib\net452\StarkbankEcdsa.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.9.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.10.2\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -153,12 +169,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -199,8 +212,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Twilio, Version=5.56.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Twilio.5.56.0\lib\net451\Twilio.dll</HintPath>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Twilio, Version=5.59.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.59.0\lib\net451\Twilio.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -237,15 +251,20 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FileController.cs" />
-    <Compile Include="Controllers\FruitTreesController.cs" />
+    <Compile Include="Controllers\FruitTreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
-    <Compile Include="Extensions\TempDataExtensions.cs" />
+    <Compile Include="DAL\GivingTreeDbContext.cs" />
+    <Compile Include="DAL\IFruitTreeData.cs" />
+    <Compile Include="DAL\SqlFruitTreeData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\FruitTree.cs" />
+    <Compile Include="Models\FruitType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,12 +305,6 @@
     <Content Include="Content\Images\Arrows\green-arrow-up.svg" />
     <Content Include="Content\Images\Arrows\red-arrow-down-512x512.png" />
     <Content Include="Content\Images\Arrows\red-arrow-down.svg" />
-    <Content Include="Content\Uploads\apple-tree-2.jpg" />
-    <Content Include="Content\Uploads\apple-tree.jpg" />
-    <Content Include="Content\Uploads\cherry-tree-2.jpg" />
-    <Content Include="Content\Uploads\cherry-tree.jpg" />
-    <Content Include="Content\Uploads\fig-tree-2.jpeg" />
-    <Content Include="Content\Uploads\fig-tree.jpg" />
     <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\128x128.png" />
     <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\16x16.png" />
     <Content Include="Content\Images\Fruit\Flat\Apple\apple-flat-background\256x256.png" />
@@ -407,12 +420,6 @@
     <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\512x512.png" />
     <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\64x64.png" />
     <Content Include="Content\Images\Fruit\Flat\Pear\pear-solid\pear-solid.svg" />
-    <Content Include="Content\Uploads\pear-tree-2.jpg" />
-    <Content Include="Content\Uploads\pear-tree.jpg" />
-    <Content Include="Content\Uploads\persimmon-tree-2.jpg" />
-    <Content Include="Content\Uploads\persimmon-tree.jpg" />
-    <Content Include="Content\Uploads\plum-tree-2.jpg" />
-    <Content Include="Content\Uploads\plum-tree.jpg" />
     <Content Include="Content\Images\Fruit\Shine\Apple\Apple-256x256.png" />
     <Content Include="Content\Images\Fruit\Shine\Apple\Apple-512x512.png" />
     <Content Include="Content\Images\Fruit\Shine\Apple\Apple.ico" />
@@ -518,6 +525,48 @@
     <Content Include="Content\Images\Misc\current-location-512x512.jpg" />
     <Content Include="Content\Images\Misc\current-location.svg" />
     <Content Include="Content\Uploads\placeholder.jpeg" />
+    <Content Include="Content\Uploads\Posts\apple-tree-2.jpg" />
+    <Content Include="Content\Uploads\Posts\apple-tree.jpg" />
+    <Content Include="Content\Uploads\Posts\cherry-tree-2.jpg" />
+    <Content Include="Content\Uploads\Posts\cherry-tree.jpg" />
+    <Content Include="Content\Uploads\Posts\fig-tree-2.jpeg" />
+    <Content Include="Content\Uploads\Posts\fig-tree.jpg" />
+    <Content Include="Content\Uploads\Posts\pear-tree-2.jpg" />
+    <Content Include="Content\Uploads\Posts\pear-tree.jpg" />
+    <Content Include="Content\Uploads\Posts\persimmon-tree-2.jpg" />
+    <Content Include="Content\Uploads\Posts\persimmon-tree.jpg" />
+    <Content Include="Content\Uploads\Posts\plum-tree-2.jpg" />
+    <Content Include="Content\Uploads\Posts\plum-tree.jpg" />
+    <Content Include="Content\Uploads\Profile\Anpan-Shokupan-Karepan-Shocked.png" />
+    <Content Include="Content\Uploads\Profile\Anpanman-Baikinman.png" />
+    <Content Include="Content\Uploads\Profile\Anpanman-EatMe.png" />
+    <Content Include="Content\Uploads\Profile\Anpanman-Fight.png" />
+    <Content Include="Content\Uploads\Profile\Anpanman-Idea.png" />
+    <Content Include="Content\Uploads\Profile\Baikinman-Confused.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Grumpy.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Guitar.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-in-DinoSuit.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Mukku-MoneyCats.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Mukku-PhoneMusic.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Mukku-Picnic.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Mukku-Pikaboo.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Mukku-RainbowRide.png" />
+    <Content Include="Content\Uploads\Profile\Gachapin-Mukku-VideoGames.png" />
+    <Content Include="Content\Uploads\Profile\Karepanman-Dismayed.png" />
+    <Content Include="Content\Uploads\Profile\Kokinchan-Ew.png" />
+    <Content Include="Content\Uploads\Profile\Kokinchan-Uncertain.png" />
+    <Content Include="Content\Uploads\Profile\MelonBear-Hearts.png" />
+    <Content Include="Content\Uploads\Profile\MelonBear-TieGame.png" />
+    <Content Include="Content\Uploads\Profile\MelonBear.png" />
+    <Content Include="Content\Uploads\Profile\Melonpanna-ByeBye.png" />
+    <Content Include="Content\Uploads\Profile\Mukku-Baffled.png" />
+    <Content Include="Content\Uploads\Profile\Mukku-Dopey.png" />
+    <Content Include="Content\Uploads\Profile\Mukku-Firey.png" />
+    <Content Include="Content\Uploads\Profile\Mukku-LoveLetter.png" />
+    <Content Include="Content\Uploads\Profile\Mukku-Maid.png" />
+    <Content Include="Content\Uploads\Profile\Mukku.png" />
+    <Content Include="Content\Uploads\Profile\Shappo-Full.png" />
+    <Content Include="Content\Uploads\Profile\Shappo-Head.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -563,39 +612,16 @@
     <Content Include="Scripts\esm\popper.min.js.map">
       <DependentUpon>popper.min.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-3.5.1.js" />
-    <Content Include="Scripts\jquery-3.5.1.min.js">
-      <DependentUpon>jquery-3.5.1.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-3.5.1.min.map">
-      <DependentUpon>jquery-3.5.1.min.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\index.js.flow">
     </Content>
-    <None Include="Scripts\jquery-3.5.1.intellisense.js">
-      <DependentUpon>jquery-3.5.1.js</DependentUpon>
+    <None Include="Scripts\jquery-3.6.0-vsdoc.js">
+      <DependentUpon>jquery-3.6.0.js</DependentUpon>
     </None>
-    <Content Include="Scripts\jquery-3.5.1.slim.js">
-      <DependentUpon>jquery-3.5.1.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-3.5.1.slim.min.js">
-      <DependentUpon>jquery-3.5.1.slim.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-3.5.1.slim.min.map">
-      <DependentUpon>jquery-3.5.1.slim.min.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.js">
-      <DependentUpon>jquery-3.5.1.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.min.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.unobtrusive.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
-      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js">
       <DependentUpon>popper.js</DependentUpon>
@@ -737,32 +763,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_GoogleMapsBlock.cshtml" />
-    <Content Include="Views\FruitTrees\NotFound.cshtml" />
-    <Content Include="Views\FruitTrees\Index.cshtml" />
-    <Content Include="Views\FruitTrees\Edit.cshtml" />
-    <Content Include="Views\FruitTrees\Details.cshtml" />
-    <Content Include="Views\FruitTrees\Delete.cshtml" />
-    <Content Include="Views\FruitTrees\Create.cshtml" />
-    <Content Include="Views\FruitTrees\_FruitTreeSummary.cshtml" />
+    <Content Include="Views\FruitTree\NotFound.cshtml" />
+    <Content Include="Views\FruitTree\Index.cshtml" />
+    <Content Include="Views\FruitTree\Edit.cshtml" />
+    <Content Include="Views\FruitTree\Details.cshtml" />
+    <Content Include="Views\FruitTree\Delete.cshtml" />
+    <Content Include="Views\FruitTree\Create.cshtml" />
+    <Content Include="Views\FruitTree\_FruitTreeSummary.cshtml" />
     <Content Include="Scripts\umd\popper.js.flow" />
-    <None Include="Scripts\jquery.validate-vsdoc.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </None>
-    <Content Include="Views\Shared\_AdditionalUserDetails.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GivingTree.Data\GivingTree.Data.csproj">
-      <Project>{1cd63258-ca8d-4ce9-9267-ebede225eb33}</Project>
-      <Name>GivingTree.Data</Name>
-    </ProjectReference>
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

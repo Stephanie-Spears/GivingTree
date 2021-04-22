@@ -3,21 +3,25 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
+using GivingTree.Web.Models;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using GivingTree.Web.Models;
+
 using SendGrid;
 using SendGrid.Helpers.Mail;
+
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
 namespace GivingTree.Web
 {
-    public class EmailService : IIdentityMessageService
+	public class EmailService : IIdentityMessageService
     {
         public async Task SendAsync(IdentityMessage message)
         {
@@ -37,7 +41,7 @@ namespace GivingTree.Web
 
 			msg.AddTo(new EmailAddress(message.Destination, "New Giving Tree User"));
 
-			var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
+			await client.SendEmailAsync(msg).ConfigureAwait(false);
         }
 	}
 
@@ -53,7 +57,7 @@ namespace GivingTree.Web
 
 			MessageResource result = MessageResource.Create(
 			new PhoneNumber(message.Destination),
-			from: new PhoneNumber(fromNumber),
+			@from: new PhoneNumber(fromNumber),
 			body: message.Body
 			);
 

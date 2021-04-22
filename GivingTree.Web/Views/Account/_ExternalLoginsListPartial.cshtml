@@ -1,12 +1,11 @@
 ﻿@model GivingTree.Web.Models.ExternalLoginListViewModel
-@using System.Configuration
 @using Microsoft.Owin.Security
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <h4>Use another service to log in.</h4>
 <hr />
 @{
-	var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes().ToList();
+	List<AuthenticationDescription> loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes().ToList();
 	if (!loginProviders.Any())
 	{
 		<div>

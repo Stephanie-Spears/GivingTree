@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using GivingTree.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using GivingTree.Web.Models;
 
 namespace GivingTree.Web.Controllers
 {
@@ -78,6 +79,8 @@ namespace GivingTree.Web.Controllers
 	            if (!await UserManager.IsEmailConfirmedAsync(user.Id))
 	            {
 		            string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+		            //added this kuz Resharper was saying it never gets used
+		            if (callbackUrl == null) throw new ArgumentNullException(nameof(callbackUrl));
 
 		            ViewBag.errorMessage = "You must have a confirmed email to log on. "
 		                                   + "The confirmation token has been resent to your email account.";
@@ -85,9 +88,8 @@ namespace GivingTree.Web.Controllers
 	            }
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,8 +157,6 @@ namespace GivingTree.Web.Controllers
         }
         
         //
-        // Info on account confirmation/pass reset https://go.microsoft.com/fwlink/?LinkID=320771
-        //
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -165,18 +165,17 @@ namespace GivingTree.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-	            var user = new ApplicationUser {UserName = model.Email, UserProfileName = model.UserProfileName, Email = model.Email, UserAboutMeSection = model.UserAboutMeSection, UserFavoriteFruit = model.UserFavoriteFruit};
-	            //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
-	            var result = await UserManager.CreateAsync(user, model.Password);
+				var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
 	                string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
-	                ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-	                                  + "before you can log in.";
+                    //added this kuz Resharper was saying it never gets used
+	                if (callbackUrl == null) throw new ArgumentNullException(nameof(callbackUrl));
+	                ViewBag.Message = "Check your email and confirm your account";
 
                     return View("Info");
-                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -233,7 +232,6 @@ namespace GivingTree.Web.Controllers
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                  string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                  string callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code }, protocol: Request.Url?.Scheme);		
@@ -392,9 +390,7 @@ namespace GivingTree.Web.Controllers
                     return View("ExternalLoginFailure");
                 }
 
-				/* var user = new ApplicationUser { UserName = model.Email, UserProfileName = model.UserProfileName, Email = model.Email, UserAboutMeSection = model.UserAboutMeSection, UserFavoriteFruit = model.UserFavoriteFruit};  */
-
-	            var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
 
 	            var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -467,7 +463,7 @@ namespace GivingTree.Web.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError("result.Error", error);
             }
         }
 

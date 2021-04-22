@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using GivingTree.Data.Models;
 
 namespace GivingTree.Web.Models
 {
@@ -13,13 +12,6 @@ namespace GivingTree.Web.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-/*        [Display(Name = "User Profile Name")]
-        public string UserProfileName { get; set; }
-        [Display(Name = "User About Me Section")]
-		public string UserAboutMeSection { get; set; }
-		[Display(Name = "User Favorite Fruit")]
-		public FruitType UserFavoriteFruit { get; set; }*/
     }
 
     public class ExternalLoginListViewModel
@@ -76,14 +68,6 @@ namespace GivingTree.Web.Models
 
     public class RegisterViewModel
     {
-	    [Display(Name = "User Profile Name")]
-		public string UserProfileName { get; set; }
-		[Display(Name = "User About Me Section")]
-		public string UserAboutMeSection { get; set; }
-		[Display(Name = "User Favorite Fruit")]
-		public FruitType UserFavoriteFruit { get; set; }
-
-
 	    [DataType(DataType.Text)]
 	    [Display(Name = "Username")]
 	    public string UserName { get; set; }

@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -12,7 +14,9 @@ namespace GivingTree.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ContainerConfig.RegisterContainer();
-        }
+
+			//ContainerConfig.RegisterContainer();
+            //AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;   
+		}
     }
 }

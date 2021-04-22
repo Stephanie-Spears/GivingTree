@@ -1,27 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-using GivingTree.Data.Models;
-using GivingTree.Data.Services;
+using GivingTree.Web.DAL;
+using GivingTree.Web.Models;
 
 namespace GivingTree.Web.Controllers
 {
 	[RequireHttps]
+	[Authorize]
 	public class HomeController : Controller
 	{ 
+		
+		private GivingTreeDbContext _db = new GivingTreeDbContext();
+		
 
-		//
-		private IFruitTreeData _db;
-
-		//
-		public HomeController(IFruitTreeData db)
+/*		public HomeController(GivingTreeDbContext db)
 		{
 			this._db = db;
-		}
+		}*/
 
 		public ActionResult Index()
 		{
-			//
-			IEnumerable<FruitTree> model = _db.GetAll();
+			IEnumerable<FruitTree> model = _db.FruitTrees.OrderBy(t => t.LastUpdated);
 			return View(model);
 		}
 
@@ -38,6 +38,12 @@ namespace GivingTree.Web.Controllers
 			ViewBag.Message = "Your contact page.";
 
 			return View();
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			_db.Dispose();
+			base.Dispose(disposing);
 		}
 	}
 }

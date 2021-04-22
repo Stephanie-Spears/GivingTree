@@ -207,7 +207,7 @@ This is used to pass a success message from one controller action to a view in a
 
 Extension methods can only live in static classes, so adding custom extension methods like TempDataExtensions.cs will need to be made static.
 
-Dropping the namespace from GivingTree.Web.Extensions to GivingTree.Web will make it so the class is available throughout the application, without having to explicitly import the namespace. 
+Dropping the namespace from GivingTree.Extensions to GivingTree will make it so the class is available throughout the application, without having to explicitly import the namespace. 
 
 
 ==========================================================================
@@ -225,6 +225,49 @@ In most cases you usually want to use one of the overloads of the method which a
 
 
 ==========================================================================
+* DbContext Proxies *
+--------------------------------------------------------------------------
+A proxy in the ORM world is an automatically generated type that inherits from your domain object type. The proxy represents an instance which has not been populated with data from the database yet, but only knows its own ID. Whenever a property which is mapped to the database is accessed, the proxy subclass will carry out the load from the database, so that the load is transparent to the client code.
+
+Proxies are typically created when you have a relationship property between two entities which is lazily loaded. E.g. when you access the user.Address property, what is really returned is an Address proxy object. Only once you access a property of that object (e.g. user.Address.StreetName) the Address object proper will be loaded.
+		 		
+
+Generally we don't need to understand what proxy classes are and what is the use of them. But there are some exceptions in which we should understand what proxy classes are:
+	1) In some scenarios, we want to serialize the data of the entity, not the proxy classes. In this case we can prevent the Entity Framework from creating a proxy instance.
+	2) In some cases, we want to create an instance of the entity class, not the proxy class (we don't require lazy loading and change track type of functionality).
+	3) An actual entity might be required to get from the proxy type. In this case we can use the static method "GetObjectType" of ObjectContext.
+
+We can also disable creation of a proxy at the time of object creation of the context instead of disabling it at the constructor of the context. I.E. within a class that calls the context like so:
+
+	using (var Context = new GivingTreeDbContext())
+	{
+		Context.Configuration.ProxyCreationEnabled = false;
+	}
+
+https://www.c-sharpcorner.com/UploadFile/ff2f08/working-with-proxies-in-entity-framework/
+
+Inside GivingTreeDbContext.cs:
+	public GivingTreeDbContext() : base("name=GivingTreeDbContext")
+	{
+		// disables proxy creation in the constructor of the context
+		this.Configuration.ProxyCreationEnabled = false;
+	}
+
+
+==========================================================================
+* Value vs. Reference Types *
+--------------------------------------------------------------------------
+There are two basic categories of data types: value types and reference types. The fundamental difference between value and reference types concerns where those values are temporarily stored in memory as your application executes. Where the value is stored affects how the .NET runtime manages the life of the value including its declaration (birth), assignment and retrieval (life), and finalization (death). This, in turn, impacts the syntax you use when working with either a value type or a reference type.
+
+==========================================================================
+* IQueriable vs IEnumerable *
+--------------------------------------------------------------------------
+IQueryable<T> extends the IEnumerable<T> interface, so anything you can do with a “plain” IEnumerable<T>, you can also do with an IQueryable<T>.
+What IQueryable<T> has that IEnumerable<T> doesn’t are two properties in particular — one that points to a query provider (e.g., a LINQ to SQL provider) and another one pointing to a query expression representing the IQueryable<T> object as a runtime-traversable abstract syntax tree that can be understood by the given query provider (for the most part, you can’t give a LINQ to SQL expression to a LINQ to Entities provider without an exception being thrown).
+So the difference between IQueryable and IEnumerable is about where the filter logic is executed. One executes on the client side and the other executes on the database. So if you working with only in-memory data collection IEnumerable is a good choice but if you want to query data collection which is connected with database `IQueryable is a better choice as it reduces network traffic and uses the power of SQL language.
+
+
+==========================================================================
 * (Title) *
 --------------------------------------------------------------------------
 body
@@ -234,6 +277,7 @@ body
 * (Title) *
 --------------------------------------------------------------------------
 body
+
 
 
 ==========================================================================
