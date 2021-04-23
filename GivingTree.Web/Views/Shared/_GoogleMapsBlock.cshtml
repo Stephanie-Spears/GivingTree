@@ -1,4 +1,5 @@
-﻿@using System.Configuration
+﻿@Scripts.Render("~/bundles/polyfill")
+@using System.Configuration
 
 
 @if (ViewBag.Markers == null)
@@ -170,4 +171,4 @@
 }
 
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-<script src="@googleMapsSrc" aysnc></script>
+<script src="@googleMapsSrc" async></script>

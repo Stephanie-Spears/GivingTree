@@ -26,9 +26,9 @@ namespace GivingTree.Web
         public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            await configSendGridasync(message);
+            await ConfigSendGridasync(message);
         }
-        private async Task configSendGridasync(IdentityMessage message)
+        private static async Task ConfigSendGridasync(IdentityMessage message)
         {
 	        string apiKey = ConfigurationManager.AppSettings["SendGridKey"];
 			var client = new SendGridClient(apiKey);
@@ -49,9 +49,9 @@ namespace GivingTree.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-			string accountSid = ConfigurationManager.AppSettings["SMSAccountIdentification"];
-			string authToken = ConfigurationManager.AppSettings["SMSAccountPassword"];
-			string fromNumber = ConfigurationManager.AppSettings["SMSAccountFrom"];
+	        string accountSid = ConfigurationManager.AppSettings["SMSAccountIdentificationLIVE"];
+	        string authToken = ConfigurationManager.AppSettings["SMSAccountAuthTokenLIVE"];
+	        string fromNumber = ConfigurationManager.AppSettings["SMSAccountFromLIVE"];
 
 			TwilioClient.Init(accountSid, authToken);
 

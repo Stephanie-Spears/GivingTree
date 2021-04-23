@@ -28,9 +28,7 @@ namespace GivingTree.Web
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-				//CookieHttpOnly = false,
-				 //CookieSecure = CookieSecureOption.Never,
-			//	CookieName = "GivingTreeApplicationCookie",
+                //CookieHttpOnly = false, CookieSecure = CookieSecureOption.Never, CookieName = "GivingTreeApplicationCookie",
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {

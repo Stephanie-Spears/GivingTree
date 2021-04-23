@@ -3,7 +3,6 @@ using Microsoft.Owin;
 using Owin;
 
 
-//[assembly: OwinStartupAttribute(typeof(GivingTree.Web.Startup))]
 [assembly: OwinStartup(typeof(Startup))]
 namespace GivingTree.Web
 {

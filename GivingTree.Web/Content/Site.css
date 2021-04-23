@@ -14,8 +14,9 @@
 */
 
 /* Google Maps */
-#map { 
-	height: 25rem;
+
+#map {
+	height: 40rem;
 	width: 100%;
 }
 
